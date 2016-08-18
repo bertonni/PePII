@@ -1,5 +1,6 @@
 <?php
-require_once 'cabecalho.php';
+include_once 'cabecalho.php';
+include_once 'functions.php';
 ?>
 <style type="text/css">
 .col-md-12, .user {
@@ -59,5 +60,5 @@ $('form').on('submit', function () {
 });
 </script>
 <?php
-require_once 'rodape.php';
+include_once 'rodape.php';
 ?>

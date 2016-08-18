@@ -8,7 +8,7 @@ include_once 'cabecalho.php';
 		<form class="form-signin">
 			<h2 class="form-signin-heading">Por favor, faça o login</h2>
 			<label for="user" class="sr-only">Usuário</label>
-			<input type="email" id="user" class="form-control" name="usuario" placeholder="Usuário" required autofocus>
+			<input type="text" id="user" class="form-control" name="usuario" placeholder="Usuário" required autofocus>
 			<label for="password" class="sr-only">Senha</label>
 			<input type="password" id="password" class="form-control" name="senha" placeholder="Senha" required>
 			<div class="checkbox">

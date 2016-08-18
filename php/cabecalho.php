@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -12,10 +15,15 @@
 
     <!-- Bootstrap core CSS -->
     <link href="../css/bootstrap.min.css" rel="stylesheet">
-
+    <!-- <script src="../js/jquery-1.12.0.min.js"></script> -->
     <link href="../css/signin.css" rel="stylesheet">
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
     <link href="../css/ie10-viewport-bug-workaround.css" rel="stylesheet">
+    <style>
+      .maiuscula {
+        text-transform: uppercase;
+      }
+    </style>
 </head>
 <body>
 	<nav class="navbar navbar-default">
@@ -49,9 +57,9 @@
           </ul>
         </li>
       </ul>
-      <form class="navbar-form navbar-left">
+      <form class="navbar-form navbar-left" action="busca.php" method="POST">
         <div class="form-group">
-          <input type="text" class="form-control" placeholder="Procurar Paciente">
+          <input type="text" class="form-control" name="texto" placeholder="Procurar Paciente">
         </div>
         <button type="submit" class="btn btn-default">Procurar</button>
       </form>
