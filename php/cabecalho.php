@@ -35,9 +35,8 @@ function logout() {
     <!-- As 3 meta tags acima *precisam* vir primeiro no head; qualquer outro conteúdo head vem *depois* destas tags -->
     <meta name="description" content="">
     <meta name="author" content="">
-
-    <!-- <title>Sistema de Cadastro</title> -->
-
+    <script src="../js/jquery-1.12.0.min.js"></script>
+    <script src="../js/jquery.maskedinput.js"></script>
     <!-- Bootstrap core CSS -->
     <link href="../css/bootstrap.min.css" rel="stylesheet">
     <!-- <script src="../js/jquery-1.12.0.min.js"></script> -->
@@ -90,16 +89,6 @@ function logout() {
       </form>
       <ul class="nav navbar-nav navbar-right">
         <li><a href="login.php">Login</a></li>
-        <!-- <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
-          <ul class="dropdown-menu">
-            <li><a href="#">Action</a></li>
-            <li><a href="#">Another action</a></li>
-            <li><a href="#">Something else here</a></li>
-            <li role="separator" class="divider"></li>
-            <li><a href="#">Separated link</a></li>
-          </ul>
-        </li> -->
       </ul>
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->

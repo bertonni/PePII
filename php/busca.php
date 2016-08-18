@@ -24,15 +24,17 @@ if($result) {
 			";
 			if($row != 0) {
 
-				echo "<table class='table table-striped'>
+				echo "<table class='table table-striped table-bordered'>
 					<tr>
 						<th class='prev_td'>Paciente</td>
+						<th class='prev_td'>Telefone</td>
 						<th class='prev_td'>E-mail</td>
 					</tr>";
 				while($array = mysqli_fetch_array($result)) {
 					echo "
 					<tr>
 						<td><a href='#'>" . $array['pac_nome'] . "</a></td>
+						<td>" . $array['pac_telefone_1'] . "</td>
 						<td>" . $array['pac_email'] . "</td>
 					</tr>
 					";

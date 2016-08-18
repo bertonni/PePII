@@ -26,7 +26,6 @@ if(mysqli_query($conn, $sql)) {
 	";
 	// header("location: sobre.php");
 } else {
-				// style='margin-top: 30px;'
 	echo "Error: " . $sql . "<br>" . mysqli_error($conn);
 }
 mysqli_close($conn);
