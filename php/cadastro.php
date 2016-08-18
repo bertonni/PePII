@@ -1,16 +1,16 @@
 <?php
 include_once 'cabecalho.php';
-include_once 'functions.php';
+connectDataBase();
 ?>
 <style type="text/css">
 .col-md-12, .user {
 	margin-top: 10px;
 }
 </style>
-<title>Cadastro</title>
+<title>Cadastro de Funcionários</title>
 <div class="container marketing">
 	<div class="container theme-showcase" role="main">
-		<div id="artilharia" class="page-header">
+		<div id="cadastro" class="page-header">
 			<h1>Cadastro de Funcionários</h1>
 		</div>
 		<div class="row">
@@ -60,5 +60,6 @@ $('form').on('submit', function () {
 });
 </script>
 <?php
+mysqli_close($conn);
 include_once 'rodape.php';
 ?>

@@ -1,7 +1,7 @@
 <?php
 include_once 'cabecalho.php';
 ?>
-<title>Signin Template for Bootstrap</title>
+<title>Login</title>
 
 <div class="container">
 	<div class="container theme-showcase" role="main">

@@ -1,5 +1,30 @@
 <?php
 session_start();
+
+$conn = null;
+function connectDataBase() {
+  global $conn;
+  $servername = "localhost";
+  $username = "root";
+  $password ="";
+  $dbname = "sistema_de_cadastro";
+
+  $conn = mysqli_connect($servername, $username, $password, $dbname);
+  if (!$conn) {
+    die("Connection failed: " . mysqli_connect_error());
+  }
+}
+function disconnectDataBase() {
+  global $conn;
+  mysqli_close($conn);
+}
+function isLogged() {
+  return isset($_SESSION['usuario']);
+}
+function logout() {
+  unset($_SESSION['usuario']);
+}
+
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -11,7 +36,7 @@ session_start();
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Sistema de Cadastro</title>
+    <!-- <title>Sistema de Cadastro</title> -->
 
     <!-- Bootstrap core CSS -->
     <link href="../css/bootstrap.min.css" rel="stylesheet">
@@ -19,11 +44,11 @@ session_start();
     <link href="../css/signin.css" rel="stylesheet">
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
     <link href="../css/ie10-viewport-bug-workaround.css" rel="stylesheet">
-    <style>
+    <!--<style>
       .maiuscula {
         text-transform: uppercase;
       }
-    </style>
+    </style>-->
 </head>
 <body>
 	<nav class="navbar navbar-default">
@@ -36,7 +61,7 @@ session_start();
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="#">Clínica Só Riso</a>
+      <a class="navbar-brand" href="#">Sistema de Cadastro</a>
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->

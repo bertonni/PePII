@@ -1,31 +1,31 @@
 <?php
 include_once 'cabecalho.php';
-include_once 'functions.php';
+connectDataBase();
 ?>
 <style type="text/css">
 .col-md-12, .user {
 	margin-top: 10px;
 }
 </style>
-<title>Cadastro</title>
+<title>Cadastro de Pacientes</title>
 <div class="container marketing">
 	<div class="container theme-showcase" role="main">
-		<div id="artilharia" class="page-header">
+		<div id="cadastro_pac" class="page-header">
 			<h1>Cadastro de Pacientes</h1>
 		</div>
 		<div class="row">
-			<form method="POST" action="validar2.php">
+			<form method="POST" action="validar_pac.php">
 				<div class="col-md-6">
 					<label for="nome">Nome *</label>
   					<input type="text" class="form-control maiuscula" id="nome" name="nome" required placeholder="Digite o nome">
 				</div>
 				<div class="col-md-3">
-					<label for="idade">Data de Nascimento *</label>
-  					<input type="date" class="form-control" id="idade" max-lenght="2" name="idade" required>
+					<label for="nasc">Data de Nascimento *</label>
+  					<input type="date" class="form-control" id="nasc" max-lenght="2" name="nasc" required>
 				</div>
 				<div class="col-md-3">
-					<label for="usuario">CPF *</label>
-  					<input type="text" class="form-control" id="usuario" name="usuario" required placeholder="Digite o CPF">
+					<label for="cpf">CPF *</label>
+  					<input type="text" class="form-control" id="cpf" name="cpf" required placeholder="Digite o CPF">
 				</div>
 				<div class="col-md-6 user">
 					<label for="endereco">Endereço *</label>
@@ -46,7 +46,7 @@ include_once 'functions.php';
 				</div>
 				<div class="col-md-5 user">
 					<label for="fone2">Telefone 2</label>
-  					<input type="text" class="form-control" id="fone2" name="fone2" required placeholder="Digite outro telefone">
+  					<input type="text" class="form-control" id="fone2" name="fone2" placeholder="Digite outro telefone">
 				</div>
 				<div class="col-md-12">
 					<button type="submit" class="btn btn-primary" title="Enviar">Enviar</button>
@@ -67,5 +67,6 @@ $('form').on('submit', function () {
 });
 </script>
 <?php
+mysqli_close($conn);
 include_once 'rodape.php';
 ?>
