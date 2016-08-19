@@ -20,7 +20,8 @@ $sql = "INSERT INTO `pacientes` (`pac_nome`, `pac_endereco`, `pac_rg`, `pac_cpf`
 if(mysqli_query($conn, $sql)) {
 	echo "<div class='container marketing'>
 			<div class='container theme-showcase' role='main'>
-				<h4>Paciente cadastrado com sucesso!!</h4>
+				<h4>Paciente cadastrado com sucesso!!</h4><br>
+				<a href='cadastro_pacientes.php'>Voltar à página de cadastro</a>
 		  	</div>
 		  </div>
 	";
