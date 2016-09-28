@@ -5,12 +5,12 @@ connectDataBase();
 if(isset($_POST['texto']) && $_POST['texto'] != "") {
 	$text = $_POST['texto'];
 	$text = strtolower($text);
-	$sql = "SELECT * FROM pacientes WHERE lower(pac_nome) like '%$text%' ";
+	$sql = "SELECT * FROM pacientes WHERE lower(pac_nome) like '%$text%' order by pac_nome";
 } else {
-	$sql = "SELECT * FROM pacientes";
+	$sql = "SELECT * FROM pacientes order by pac_nome";
 }
-
-$result = mysqli_query($conn, $sql);
+echo "<title>Resultados da Busca</title>";
+$result = mysqli_query($connection, $sql);
 
 // $arr = mysqli_fetch_array($result);
 if($result) {

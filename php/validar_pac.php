@@ -17,7 +17,7 @@ if(isset($_POST['fone2'])){
 
 $sql = "INSERT INTO `pacientes` (`pac_nome`, `pac_endereco`, `pac_rg`, `pac_cpf`, `pac_email`, `pac_data_nasc`, `pac_telefone_1`, `pac_telefone_2`) VALUES ('$nome', '$endereco', '$rg', '$cpf', '$email', '$nasc', '$fone1', '$fone2')";
 
-if(mysqli_query($conn, $sql)) {
+if(mysqli_query($connection, $sql)) {
 	echo "<div class='container marketing'>
 			<div class='container theme-showcase' role='main'>
 				<h4>Paciente cadastrado com sucesso!!</h4><br>
@@ -25,10 +25,9 @@ if(mysqli_query($conn, $sql)) {
 		  	</div>
 		  </div>
 	";
-	// header("location: sobre.php");
 } else {
-	echo "Error: " . $sql . "<br>" . mysqli_error($conn);
+	echo "Error: " . $sql . "<br>" . mysqli_error($connection);
 }
-mysqli_close($conn);
+mysqli_close($connection);
 include_once 'rodape.php';
 ?>

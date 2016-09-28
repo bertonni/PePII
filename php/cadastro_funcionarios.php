@@ -1,6 +1,5 @@
 <?php
 include_once 'cabecalho.php';
-connectDataBase();
 ?>
 <style type="text/css">
 .col-md-12, .user {
@@ -14,21 +13,21 @@ connectDataBase();
 			<h1>Cadastro de Funcionários</h1>
 		</div>
 		<div class="row">
-			<form method="POST" action="validar.php">
+			<form method="POST" action="validar_fun.php">
 				<div class="col-md-6">
 					<label for="nome">Nome *</label>
   					<input type="text" class="form-control" id="nome" name="nome" required placeholder="Digite seu nome">
 				</div>
 				<div class="col-md-4">
-					<label for="idade">Idade *</label>
-  					<input type="text" class="form-control" id="idade" max-lenght="2" name="idade" required placeholder="Digite sua idade">
+					<label for="nasc">Data de Nascimento *</label>
+  					<input type="date" class="form-control" id="nasc" max-lenght="2" name="nasc" required>
 				</div>
 
 				<div class="col-md-4 user">
 					<label for="usuario">Usuário *</label>
   					<input type="text" class="form-control" id="usuario" name="usuario" required placeholder="Digite um nome de usuário">
 				</div>
-				
+
 				<div class="col-md-3 user">
 					<label for="senha">Senha *</label>
   					<input type="password" class="form-control" id="senha" name="senha" required placeholder="Digite sua senha">
@@ -60,6 +59,5 @@ $('form').on('submit', function () {
 });
 </script>
 <?php
-mysqli_close($conn);
 include_once 'rodape.php';
 ?>

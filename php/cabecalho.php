@@ -1,22 +1,22 @@
 <?php
 session_start();
 
-$conn = null;
+$connection = null;
 function connectDataBase() {
-  global $conn;
+  global $connection;
   $servername = "localhost";
   $username = "root";
-  $password ="";
+  $password ="root";
   $dbname = "sistema_de_cadastro";
 
-  $conn = mysqli_connect($servername, $username, $password, $dbname);
-  if (!$conn) {
+  $connection = mysqli_connect($servername, $username, $password, $dbname);
+  if (!$connection) {
     die("Connection failed: " . mysqli_connect_error());
   }
 }
 function disconnectDataBase() {
-  global $conn;
-  mysqli_close($conn);
+  global $connection;
+  mysqli_close($connection);
 }
 function isLogged() {
   return isset($_SESSION['usuario']);
@@ -71,8 +71,8 @@ function logout() {
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Cadastro<span class="caret"></span></a>
           <ul class="dropdown-menu">
+            <li><a href="cadastro_funcionarios.php">Cadastro de Funcionários</a></li>
             <li><a href="cadastro_pacientes.php">Cadastro de Pacientes</a></li>
-            <li><a href="cadastro.php">Cadastro de Funcionários</a></li>
             <!-- <li><a href="#">Something else here</a></li>
             <li role="separator" class="divider"></li>
             <li><a href="#">Separated link</a></li>
@@ -87,9 +87,28 @@ function logout() {
         </div>
         <button type="submit" class="btn btn-default">Procurar</button>
       </form>
+      <?php
+      if(!isLogged()) {
+      ?>
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="login.php">Login</a></li>
+        <li><a href="login.php">Entrar</a></li>
       </ul>
+      <?php
+      } else {
+      ?>
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="#">
+          <?php
+          echo "Bem vindo(a), <b>" . $_SESSION['usuario'] . "</b>!!";
+          ?>
+          </a>
+          </li>
+          <li><a href="logout.php">Sair</a></li>
+        </li>
+      </ul>
+      <?php
+      }
+      ?>
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
 </nav>

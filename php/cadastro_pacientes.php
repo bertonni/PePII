@@ -18,7 +18,7 @@ jQuery(function($) {
 			element.mask("(99) 9999-9999?9");
 		}
 	}).trigger('focusout');
-	
+
 	$("#cpf").mask("999.999.999-99");
 	$("#rg").mask("99.999.99?9");
 });
@@ -29,6 +29,9 @@ jQuery(function($) {
 	margin-top: 10px;
 }
 </style>
+<?php
+if(isLogged()) {
+?>
 <title>Cadastro de Pacientes</title>
 <div class="container marketing">
 	<div class="container theme-showcase" role="main">
@@ -89,6 +92,17 @@ jQuery(function($) {
 	});
 	</script>
 	<?php
-	mysqli_close($conn);
-	include_once 'rodape.php';
-	?>
+} else {
+?>
+<div class="container marketing">
+    <div class="container theme-showcase" role="main">
+        <div id="cadastro" class="page-header">
+            <h2>Por favor, faça o login para cadastrar um Paciente</h2>
+        </div>
+    </div>
+</div>
+<?php
+}
+mysqli_close($conn);
+include_once 'rodape.php';
+?>
