@@ -5,7 +5,7 @@ $connection = null;
 function connectDataBase() {
   global $connection;
   $servername = "localhost";
-  $username = "root";
+  $username ="root";
   $password ="root";
   $dbname = "sistema_de_cadastro";
 
@@ -66,7 +66,7 @@ function logout() {
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
-        <li class="active"><a href="#">Home <span class="sr-only">(current)</span></a></li>
+        <li class="active"><a href="home.php">Home <span class="sr-only">(current)</span></a></li>
         <!-- <li><a href="#">Link</a></li> -->
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Cadastro<span class="caret"></span></a>

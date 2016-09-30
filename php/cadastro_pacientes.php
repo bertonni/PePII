@@ -103,6 +103,6 @@ if(isLogged()) {
 </div>
 <?php
 }
-mysqli_close($conn);
+mysqli_close($connection);
 include_once 'rodape.php';
 ?>
