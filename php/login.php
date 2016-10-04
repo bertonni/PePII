@@ -1,10 +1,16 @@
 <?php
-include_once 'cabecalho.php';
+require_once 'cabecalho.php';
 ?>
 <style type="text/css">
 	.erro {
 		color: red;
-		text-align: center;
+	}
+	.form-signin-heading {
+		color: gray;
+		margin-left: 10%;
+	}
+	.form-control {
+		border-radius: 0;
 	}
 </style>
 <title>Login</title>
@@ -12,7 +18,7 @@ include_once 'cabecalho.php';
 <div class="container">
 	<div class="container theme-showcase" role="main">
 		<form class="form-signin" method="POST" action="validar_login.php">
-			<h2 class="form-signin-heading">Por favor, faça o login</h2>
+			<h3 class="form-signin-heading">Por favor, faça o login</h3>
 			<label for="user" class="sr-only">Usuário</label>
 			<input type="text" id="user" class="form-control" name="usuario" placeholder="Usuário" required autofocus>
 			<label for="password" class="sr-only">Senha</label>
@@ -32,10 +38,9 @@ include_once 'cabecalho.php';
 	</div> <!-- /container theme-showcase -->
 </div> <!-- /container -->
 
-
 <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
 <!-- <script src="../../assets/js/ie10-viewport-bug-workaround.js"></script> -->
 <?php
 unset($_SESSION['login_incorreto']);
-include_once 'rodape.php';
+require_once 'rodape.php';
 ?>
