@@ -1,5 +1,5 @@
 <?php
-include_once 'cabecalho.php';
+require_once 'cabecalho.php';
 connectDataBase();
 
 $nome = $_POST['nome'];
@@ -28,6 +28,6 @@ if(mysqli_query($connection, $sql)) {
 } else {
 	echo "Error: " . $sql . "<br>" . mysqli_error($connection);
 }
-mysqli_close($connection);
-include_once 'rodape.php';
+disconnectDataBase();
+require_once 'rodape.php';
 ?>
