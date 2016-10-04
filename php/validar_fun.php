@@ -1,13 +1,14 @@
 <?php
-include_once 'cabecalho.php';
+require_once 'cabecalho.php';
 connectDataBase();
 
 $nome = $_POST['nome'];
 $nasc = $_POST['nasc'];
 $usuario = $_POST['usuario'];
 $senha = md5($_POST['senha']);
+$role = "funcionario";
 
-$sql = "INSERT INTO `funcionarios` (`fun_nome`, `fun_data_nasc`, `fun_usuario`, `fun_senha`) VALUES ('$nome', '$nasc', '$usuario', '$senha')";
+$sql = "INSERT INTO `funcionarios` (`fun_nome`, `fun_data_nasc`, `fun_usuario`, `fun_senha`, `fun_role`) VALUES ('$nome', '$nasc', '$usuario', '$senha', '$role')";
 
 if(mysqli_query($connection, $sql)) {
     echo "<div class='container marketing'>
@@ -20,6 +21,6 @@ if(mysqli_query($connection, $sql)) {
 } else {
     echo "Error: " . $sql . "<br>" . mysqli_error($connection);
 }
-mysqli_close($connection);
-include_once 'rodape.php';
+disconnectDataBase();
+require_once 'rodape.php';
 ?>
