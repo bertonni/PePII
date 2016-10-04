@@ -1,5 +1,5 @@
 <?php
-include_once 'cabecalho.php';
+require_once 'cabecalho.php';
 connectDataBase();
 ?>
 <script type="text/javascript">
@@ -103,6 +103,6 @@ if(isLogged()) {
 </div>
 <?php
 }
-mysqli_close($connection);
-include_once 'rodape.php';
+disconnectDataBase();
+require_once 'rodape.php';
 ?>

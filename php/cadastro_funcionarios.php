@@ -1,11 +1,14 @@
 <?php
-include_once 'cabecalho.php';
+require_once 'cabecalho.php';
 ?>
 <style type="text/css">
 .col-md-12, .user {
 	margin-top: 10px;
 }
 </style>
+<?php
+if(isLogged() && isAdmin()) {
+?>
 <title>Cadastro de Funcionários</title>
 <div class="container marketing">
 	<div class="container theme-showcase" role="main">
@@ -59,5 +62,16 @@ $('form').on('submit', function () {
 });
 </script>
 <?php
-include_once 'rodape.php';
+} else {
+?>
+<div class="container marketing">
+    <div class="container theme-showcase" role="main">
+        <div id="cadastro" class="page-header">
+            <h1>Apenas o administrador do sistema pode cadastrar um funcionário</h1>
+        </div>
+    </div>
+</div>
+<?php
+}
+require_once 'rodape.php';
 ?>
