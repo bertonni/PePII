@@ -11,7 +11,10 @@ require_once 'cabecalho.php';
 	}
 	.form-control {
 		border-radius: 0;
-	}
+    }
+    .user {
+        margin-bottom: 5px;
+    }
 </style>
 <title>Login</title>
 
@@ -20,7 +23,7 @@ require_once 'cabecalho.php';
 		<form class="form-signin" method="POST" action="validar_login.php">
 			<h3 class="form-signin-heading">Por favor, faça o login</h3>
 			<label for="user" class="sr-only">Usuário</label>
-			<input type="text" id="user" class="form-control" name="usuario" placeholder="Usuário" required autofocus>
+			<input type="text" id="user" class="form-control user" name="usuario" placeholder="Usuário" required autofocus>
 			<label for="password" class="sr-only">Senha</label>
 			<input type="password" id="password" class="form-control" name="senha" placeholder="Senha" required>
 			<!-- <div class="checkbox">
@@ -31,7 +34,7 @@ require_once 'cabecalho.php';
 			<button class="btn btn-lg btn-primary btn-block" type="submit">Entrar</button>
 			<?php
 				if(isset($_SESSION['login_incorreto']) && $_SESSION['login_incorreto']) {
-					echo '<spam class="erro">Usuário ou login incorretos</spam>';
+					echo '<spam class="erro">Usuário ou senha incorretos</spam>';
 				}
 			?>
 		</form>
