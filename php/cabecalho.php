@@ -9,7 +9,7 @@ function connectDataBase() {
   global $connection;
   $servername = "localhost";
   $username ="root";
-  $password ="root";
+  $password ="";
   $dbname = "sistema_de_cadastro";
 
   $connection = mysqli_connect($servername, $username, $password, $dbname);
@@ -57,11 +57,11 @@ function logout() {
     <link href="../css/signin.css" rel="stylesheet">
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
     <link href="../css/ie10-viewport-bug-workaround.css" rel="stylesheet">
-    <!-- <style>
-      .dropdown-toggle {
-        visibility: hidden;
+    <style>
+      .list_item:hover {
+         background-color: #e7e7e7;
       }
-    </style> -->
+    </style>
 </head>
 <body>
 	<nav class="navbar navbar-default">
@@ -74,18 +74,18 @@ function logout() {
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="#">Sistema de Cadastro</a>
+      <a class="navbar-brand" href="home.php">Odonto System</a>
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
-        <li class="active"><a href="home.php">Página Inicial<span class="sr-only">(current)</span></a></li>
+        <li class="list_item"><a href="home.php">Página Inicial</a></li>
         <!-- <li><a href="#">Link</a></li> -->
         <?php
         if(isLogged() && isAdmin()) {
         ?>
-        <li><a href="cadastro_funcionarios.php">Cadastrar Funcionário</a></li>
+        <li class="list_item"><a href="cadastro_funcionarios.php">Cadastrar Funcionário</a></li>
         <?php } ?>
         <li class="dropdown">
           <!-- <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Cadastro<span class="caret"></span></a>
@@ -104,7 +104,7 @@ function logout() {
       if(!isLogged()) {
       ?>
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="login.php">Entrar</a></li>
+        <li class="list_item"><a href="login.php">Entrar</a></li>
       </ul>
       <?php
 
@@ -119,7 +119,7 @@ function logout() {
           ?>
           </a>
           </li>
-          <li><a href="logout.php">Sair</a></li>
+          <li class="list_item"><a href="logout.php">Sair</a></li>
         </li>
       </ul>
       <?php
