@@ -80,16 +80,17 @@ if($result && isset($_POST['texto'])) {
 				<th class='prev_td'>E-mail</td>
 				</tr>";
 		while($array = mysqli_fetch_array($result)) {
+			$id = $array['pac_id'];
 			echo "
 			<tr>
-				<td><a href='#'>" . $array['pac_nome'] . "</a></td>
+				<td><a href='paciente.php?id=" .$id . "'>" . $array['pac_nome'] . "</a></td>
 				<td>" . $array['pac_telefone_1'] . "</td>
 				<td>" . $array['pac_email'] . "</td>
 			</tr>
 			";
 		}
 	} else {
-		echo "<h4>Não foram encontrados resultados para sua busca</h4>";
+		echo "<h3>Não foram encontrados resultados para sua busca</h3>";
 	}
 	echo "</table>
 		</div>
