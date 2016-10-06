@@ -67,7 +67,7 @@ $('form').on('submit', function () {
 <div class="container marketing">
     <div class="container theme-showcase" role="main">
         <div id="cadastro" class="page-header">
-            <h1>Apenas o administrador do sistema pode cadastrar um funcionário</h1>
+            <h3>Apenas o administrador do sistema pode cadastrar um funcionário</h3>
         </div>
     </div>
 </div>
