@@ -97,7 +97,7 @@ if(isLogged()) {
 <div class="container marketing">
     <div class="container theme-showcase" role="main">
         <div id="cadastro" class="page-header">
-            <h2>Por favor, faça o login para cadastrar um Paciente</h2>
+            <h3>Por favor, faça o login para cadastrar um Paciente</h3>
         </div>
     </div>
 </div>
