@@ -13,7 +13,7 @@ $sql = "INSERT INTO `funcionarios` (`fun_nome`, `fun_data_nasc`, `fun_usuario`, 
 if(mysqli_query($connection, $sql)) {
     echo "<div class='container marketing'>
             <div class='container theme-showcase' role='main'>
-                <h4>Funcionário cadastrado com sucesso!!</h4><br>
+                <h3>Funcionário cadastrado com sucesso!!</h3><br>
                 <a href='cadastro_funcionarios.php'>Voltar à página de cadastro</a>
             </div>
           </div>
