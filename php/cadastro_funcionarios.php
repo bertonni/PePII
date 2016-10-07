@@ -7,6 +7,8 @@ require_once 'cabecalho.php';
 }
 </style>
 <?php
+// Checa se o usuário está logado e se é o Administrador do Sistema
+// Se sim, permite o acesso ao cadastro de funcionários
 if(isLogged() && isAdmin()) {
 ?>
 <title>Cadastro de Funcionários</title>
@@ -50,8 +52,6 @@ if(isLogged() && isAdmin()) {
 			</form>
 		</div>
 	</div>
-<br>
-<br>
 <script type="text/javascript">
 $('form').on('submit', function () {
     if($(this).find('input[name="senha"]').val() != $(this).find('input[name="confirma_senha"]').val()) {
@@ -63,6 +63,8 @@ $('form').on('submit', function () {
 </script>
 <?php
 } else {
+/*Se o usuário não estiver logado e/ou não for administrador do Sistema, exibe uma mensgaem pois apenas
+o administrador pode cadastrar funcionários*/
 ?>
 <div class="container marketing">
     <div class="container theme-showcase" role="main">

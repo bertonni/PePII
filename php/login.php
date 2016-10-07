@@ -4,6 +4,7 @@ require_once 'cabecalho.php';
 <style type="text/css">
 	.erro {
 		color: red;
+		margin-left: 13%;
 	}
 	.form-signin-heading {
 		color: gray;
@@ -26,15 +27,12 @@ require_once 'cabecalho.php';
 			<input type="text" id="user" class="form-control user" name="usuario" placeholder="Usuário" required autofocus>
 			<label for="password" class="sr-only">Senha</label>
 			<input type="password" id="password" class="form-control" name="senha" placeholder="Senha" required>
-			<!-- <div class="checkbox">
-				<label>
-					<input type="checkbox" value="remember-me"> Lembre-me
-				</label>
-			</div> -->
 			<button class="btn btn-lg btn-primary btn-block" type="submit">Entrar</button>
 			<?php
+				// Checa se a variável de sessão "$_SESSION['login_incorreto']" está setada e se é verdadeira (Se o usuário errou o login)
+				// Se sim, exibe uma mensagem dizendo que o usuário ou senha estão incorretos
 				if(isset($_SESSION['login_incorreto']) && $_SESSION['login_incorreto']) {
-					echo '<spam class="erro">Usuário ou senha incorretos</spam>';
+					echo '<spam class="erro">*** Usuário ou senha incorretos ***</spam>';
 				}
 			?>
 		</form>

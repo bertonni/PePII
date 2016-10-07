@@ -30,6 +30,7 @@ jQuery(function($) {
 }
 </style>
 <?php
+// Checa se o usuário está logado (Só usuários cadastrados e devidamente autenticados podem ter acesso ao cadastro de pacientes)
 if(isLogged()) {
 ?>
 <title>Cadastro de Pacientes</title>
@@ -93,6 +94,7 @@ if(isLogged()) {
 	</script>
 	<?php
 } else {
+// Se o usuário não estiver logado, exibe uma mensagem pedindo para que ele faça o login
 ?>
 <div class="container marketing">
     <div class="container theme-showcase" role="main">

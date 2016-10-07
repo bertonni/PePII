@@ -62,28 +62,29 @@ echo "<title>Resultados da Busca</title>";
 $result = mysqli_query($connection, $sql);
 
 if($result && isset($_POST['texto'])) {
+	// Guarda o número de linhas retornadas da consulta
 	$row = mysqli_num_rows($result);
 
 	echo "<div class='container marketing'>
 	<div class='container theme-showcase' role='main'>
-		<!-- <div id='cadastro_pac' class='page-header'>
-		<h2>Resultados da Busca</h2>
-	</div> -->
-	<br>
 	<br>
 	";
+	//  Se o número de linhas retornadas for maior que 1, (foram encontrados resultados)
 	if($row != 0) {
+	// Imprime a tabela
 	echo "<table class='table table-striped table-bordered'>
 	<tr>
 		<th class='prev_td'>Paciente</td>
 			<th class='prev_td'>Telefone</td>
 				<th class='prev_td'>E-mail</td>
 				</tr>";
+		// Enquanto houver dados no array, executa os comandos a seguir
 		while($array = mysqli_fetch_array($result)) {
+			// Salva o ID do paciente para passar pelo método GET no link que leva à página de dados do paciente
 			$id = $array['pac_id'];
 			echo "
 			<tr>
-				<td><a href='paciente.php?id=" .$id . "'>" . $array['pac_nome'] . "</a></td>
+				<td><a href='paciente.php?id=" . $id . "'>" . $array['pac_nome'] . "</a></td>
 				<td>" . $array['pac_telefone_1'] . "</td>
 				<td>" . $array['pac_email'] . "</td>
 			</tr>
