@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 07, 2016 at 02:46 PM
+-- Generation Time: Oct 07, 2016 at 10:24 PM
 -- Server version: 10.1.10-MariaDB
 -- PHP Version: 7.0.2
 
@@ -31,8 +31,22 @@ CREATE TABLE `agendamentos` (
   `agd_fun_id` int(11) NOT NULL,
   `agd_pac_id` int(11) NOT NULL,
   `agd_data` date NOT NULL,
-  `agd_hora` varchar(5) NOT NULL
+  `agd_hora` varchar(6) NOT NULL,
+  `agd_status` varchar(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `agendamentos`
+--
+
+INSERT INTO `agendamentos` (`agd_id`, `agd_fun_id`, `agd_pac_id`, `agd_data`, `agd_hora`, `agd_status`) VALUES
+(1, 1, 6, '2016-11-15', '10:00', 'Agendada'),
+(2, 1, 9, '2016-11-10', '11:30', 'Agendada'),
+(3, 1, 9, '2016-12-09', '09:00', 'Agendada'),
+(4, 2, 6, '2016-10-27', '09:00', 'Agendada'),
+(5, 2, 9, '2017-01-18', '11:00', 'Agendada'),
+(7, 2, 9, '2016-11-10', '11:00', 'Cancelada'),
+(8, 2, 13, '2016-10-18', '10:00', 'Agendada');
 
 -- --------------------------------------------------------
 
@@ -55,7 +69,8 @@ CREATE TABLE `funcionarios` (
 
 INSERT INTO `funcionarios` (`fun_id`, `fun_nome`, `fun_data_nasc`, `fun_usuario`, `fun_senha`, `fun_role`) VALUES
 (1, 'Bertonni Thiago de Souza Paz', '1986-11-08', 'Bertonni', '094f0c783c40b68a06935a0cb5755862', 'admin'),
-(2, 'Mateus Nascimento', '1993-04-25', 'Mateus', 'e42b6a82864b7060c447ecebd62518a3', 'funcionario');
+(2, 'Mateus Nascimento', '1993-04-25', 'Mateus', 'e42b6a82864b7060c447ecebd62518a3', 'funcionario'),
+(3, 'Flaviana Varino Cavalcanti', '1992-10-10', 'Flaviana', 'd8e6e88ae7f0f2acc33965a71bd52746', 'funcionario');
 
 -- --------------------------------------------------------
 
@@ -123,12 +138,12 @@ ALTER TABLE `pacientes`
 -- AUTO_INCREMENT for table `agendamentos`
 --
 ALTER TABLE `agendamentos`
-  MODIFY `agd_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `agd_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 --
 -- AUTO_INCREMENT for table `funcionarios`
 --
 ALTER TABLE `funcionarios`
-  MODIFY `fun_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `fun_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT for table `pacientes`
 --
