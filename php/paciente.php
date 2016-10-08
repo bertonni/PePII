@@ -13,28 +13,31 @@ $result = mysqli_query($connection, $sql);
 $array = mysqli_fetch_array($result);
 ?>
 <style type="text/css">
-	.td_one {
-		width: 25%;
-	}
-	.edit, .status {
-		float: right;
-	}
-	.marcar {
-		float: left;
-	}
+.td_one {
+	width: 25%;
+}
+.edit, .status {
+	float: right;
+}
+.marcar {
+	float: left;
+}
 </style>
-<title>Dados do Paciente</title>
-<div class="container marketing">
-	<div class="container theme-showcase" role="main">
-		<div id="cadastro_pac" class="page-header">
-			<h1>Dados do Paciente</h1>
-		</div>
-		<div class="row">
-			<!-- Passando o id do paciente pelo método GET para as páginas de edição de dados e marcação de consultas -->
-			<a href="editar_dados.php?id=<?= $id ?>" class="edit">Editar Dados do paciente</a>
-			<a href="consulta.php?id=<?= $id ?>" class="marcar">Marcar Consulta</a>
-			<br>
-			<br>
+<?php
+if(isLogged()) {
+	?>
+	<title>Dados do Paciente</title>
+	<div class="container marketing">
+		<div class="container theme-showcase" role="main">
+			<div id="cadastro_pac" class="page-header">
+				<h1>Dados do Paciente</h1>
+			</div>
+			<div class="row">
+				<!-- Passando o id do paciente pelo método GET para as páginas de edição de dados e marcação de consultas -->
+				<a href="editar_dados.php?id=<?= $id ?>" class="edit">Editar Dados do paciente</a>
+				<a href="consulta.php?id=<?= $id ?>" class="marcar">Marcar Consulta</a>
+				<br>
+				<br>
 				<table class='table table-striped table-bordered'>
 					<tr>
 						<td class='td_one'><b>Nome</b></td>
@@ -69,25 +72,25 @@ $array = mysqli_fetch_array($result);
 						<td><?= $array['pac_telefone_2'] ?></td>
 					</tr>
 				</table>
-		</div>
-		<div id="cadastro_pac" class="page-header">
-			<h1>Histórico de Consultas</h1>
-		</div>
-		<div class="row">
-			<?php
+			</div>
+			<div id="cadastro_pac" class="page-header">
+				<h1>Histórico de Consultas</h1>
+			</div>
+			<div class="row">
+				<?php
 				/*Consulta para buscar todas as consultas do paciente, cujo id foi recebido pelo método GET no início do arquivo, em ordem
 				crescente de data*/
 				$sql = "SELECT * FROM agendamentos WHERE agd_pac_id = '$id' ORDER BY agd_data ASC";
 				$result = mysqli_query($connection, $sql);
-			?>
-			<table class='table table-striped table-bordered'>
-				<tr>
-					<th>Data</th>
-					<th>Hora</th>
-					<th>Funcionário</th>
-					<th>Situação</th>
-				</tr>
-			<?php	
+				?>
+				<table class='table table-striped table-bordered'>
+					<tr>
+						<th>Data</th>
+						<th>Hora</th>
+						<th>Funcionário</th>
+						<th>Situação</th>
+					</tr>
+					<?php	
 			/*Enquanto houver dados no array associativo '$consultas', salva os valores em variáveis, realiza a consulta
 			para saber o nome do funcionário que realizou o agendamento e exibe-os na tabela*/
 			while($consultas = mysqli_fetch_array($result)) {
@@ -104,15 +107,25 @@ $array = mysqli_fetch_array($result);
 					<td><?= $funcionario ?></td>
 					<td><?= $consultas['agd_status'] ?><a class='status' href='editar_status_consulta.php?id=<?= $id ?>&consulta=<?= $id_consulta ?>'>alterar</a></td>
 				</tr>
-		<?php
+				<?php
 			}
-		?>
-			</table>
-		</div>
+			?>
+		</table>
 	</div>
-	<br>
-	<br>
+</div>
+<br>
+<br>
 <?php
-disconnectDataBase();
-require_once 'rodape.php';
-?>
+} else {
+	?>
+	<div class="container marketing">
+		<div class="container theme-showcase" role="main">
+			<div id="cadastro" class="page-header">
+				<h3>Por favor, faça o login para visualizar os dados do paciente</h3>
+			</div>
+		</div>
+		<?php
+	}
+	disconnectDataBase();
+	require_once 'rodape.php';
+	?>

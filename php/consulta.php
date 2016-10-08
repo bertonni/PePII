@@ -8,6 +8,9 @@ $idPaciente = $_GET['id'];
 	margin-top: 10px;
 }
 </style>
+<?php
+if(isLogged()) {
+?>
 <title>Marcação de Consulta</title>
 
 <div class="container marketing">
@@ -48,5 +51,15 @@ $idPaciente = $_GET['id'];
 		</div>
 	</div>
 <?php
+} else {
+?>
+<div class="container marketing">
+    <div class="container theme-showcase" role="main">
+        <div id="cadastro" class="page-header">
+            <h3>Por favor, faça o login para marcar uma consulta</h3>
+        </div>
+    </div>
+<?php
+}
 require_once 'rodape.php';
 ?>
