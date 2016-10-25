@@ -38,6 +38,7 @@ if(isLogged()) {
 	<div class="container theme-showcase" role="main">
 		<div id="cadastro_pac" class="page-header">
 			<h1>Cadastro de Pacientes</h1>
+			<p>Os Campos com <font color="#ce1414"> * </font>são obrigatorios</p>
 		</div>
 		<div class="row">
 			<form method="POST" action="validar_pac.php">

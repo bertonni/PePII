@@ -16,6 +16,7 @@ if(isLogged() && isAdmin()) {
 	<div class="container theme-showcase" role="main">
 		<div id="cadastro" class="page-header">
 			<h1>Cadastro de Funcionários</h1>
+				<p>Os Campos com <font color="#ce1414"> * </font>são obrigatorios</p>
 		</div>
 		<div class="row">
 			<form method="POST" action="validar_fun.php">
