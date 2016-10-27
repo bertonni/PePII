@@ -34,14 +34,13 @@ if(isLogged()) {
 			</div>
 			<div class="row">
 				<!-- Passando o id do paciente pelo método GET para as páginas de edição de dados e marcação de consultas -->
-				<a href="editar_dados.php?id=<?= $id ?>" class="edit">Editar Dados do paciente</a>
-				<a href="consulta.php?id=<?= $id ?>" class="marcar">Marcar Consulta</a>
-				<br>
-				<br>
+				
 				<table class='table table-striped table-bordered'>
 					<tr>
 						<td class='td_one'><b>Nome</b></td>
-						<td><?= $array['pac_nome'] ?></td>
+						<td><?= $array['pac_nome'] ?>
+							<a href="editar_dados.php?id=<?= $id ?>" class="edit">Editar Dados do paciente</a>
+						</td>
 					</tr>
 					<tr>
 						<td class='td_one'><b>CPF</b></td>
@@ -76,6 +75,8 @@ if(isLogged()) {
 			<div id="cadastro_pac" class="page-header">
 				<h1>Histórico de Consultas</h1>
 			</div>
+			<a href="consulta.php?id=<?= $id ?>" class="marcar">Marcar Consulta</a>
+			<br></br>
 			<div class="row">
 				<?php
 				/*Consulta para buscar todas as consultas do paciente, cujo id foi recebido pelo método GET no início do arquivo, em ordem
