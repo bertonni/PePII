@@ -78,6 +78,9 @@ if(isLogged()) {
 				<div class="col-md-12">
 					<button type="submit" class="btn btn-primary" title="Enviar">Enviar</button>
 					<button type="reset" class="btn btn-default" title="Limpar">Limpar</button>
+                    
+                    <img src="../imagens/botao_voltar.png" alt="Voltar para página anterior">
+                    <a href = "home.php"><img src = botao_voltar.png"></a>
 				</div>
 			</form>
 		</div>
