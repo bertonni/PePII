@@ -26,6 +26,10 @@ $array = mysqli_fetch_array($result);
 	margin-bottom: 10px;
 	float: right;
 }
+.editar {
+	float: right;
+	margin-right: 5px;
+}
 .marcar {
 	color: white;
 }
@@ -46,6 +50,7 @@ if(isLogged()) {
 			<div class="row">
 			<button class="btn btn-warning voltar" onClick="history.go(-2)">Voltar</button>
 			<button class="btn btn-success"><a href="consulta.php?id=<?= $id ?>" class="marcar">Marcar Consulta</a></button>
+			<button class="btn btn-primary editar"><a href="editar_dados.php?id=<?= $id ?>" class="marcar">Editar Dados</a></button>
 			<br></br>
 				<!-- Passando o id do paciente pelo método GET para as páginas de edição de dados e marcação de consultas -->
 				
@@ -53,7 +58,6 @@ if(isLogged()) {
 					<tr>
 						<td class='td_one'><b>Nome</b></td>
 						<td><?= $array['pac_nome'] ?>
-							<a href="editar_dados.php?id=<?= $id ?>" class="edit">Editar Dados do paciente</a>
 						</td>
 					</tr>
 					<tr>
