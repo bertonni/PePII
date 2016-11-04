@@ -15,6 +15,8 @@ $idPaciente = $_POST['id'];
 $data = $_POST['data_consulta'];
 $hora = $_POST['hora_consulta'];
 $status = "Agendada";
+$medico = $_POST['medico'];
+$especialidade = $_POST['especialidade'];
 
 //Consulta para pegar o nome do paciente que está marcando a consulta para exibir uma mensagem personalizada quando a consulta for concluída
 $sql = "SELECT pac_nome FROM pacientes WHERE pac_id='$idPaciente'";
@@ -30,7 +32,7 @@ $rows = mysqli_num_rows($result);
 
 // Se não existir agendamento para essa data/hora, agenda a consulta normalmente.
 if($rows == 0) {
-	$sql = "INSERT INTO `agendamentos` (`agd_fun_id`, `agd_pac_id`, `agd_data`, `agd_hora`, `agd_status`) VALUES ('$idFuncionario', '$idPaciente', '$data', '$hora', '$status')";
+	$sql = "INSERT INTO `agendamentos` (`agd_fun_id`, `agd_pac_id`, `agd_data`, `agd_hora`, `agd_status`, `agd_medico`, `agd_especialidade`) VALUES ('$idFuncionario', '$idPaciente', '$data', '$hora', '$status', '$medico', '$especialidade')";
 
 	if(mysqli_query($connection, $sql)) {
 	    echo "<div class='container marketing'>

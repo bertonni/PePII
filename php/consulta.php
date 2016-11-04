@@ -1,12 +1,19 @@
-<?php
+ <?php
 require_once 'cabecalho.php';
 // Salva o id do paciente passado pelo método GET
 $idPaciente = $_GET['id'];
 ?>
 <style type="text/css">
-.col-md-12, .user {
-	margin-top: 10px;
-}
+	.col-md-12, .user {
+		margin-top: 10px;
+	}
+    .hidden {
+        visibility: hidden;
+    }
+    .voltar {
+		margin-bottom: 10px;
+		float: right;
+	}
 </style>
 <?php
 if(isLogged()) {
@@ -20,6 +27,34 @@ if(isLogged()) {
 		</div>
 		<div class="row">
 			<form method="POST" action="validar_consulta.php">
+			<div class="col-md-12">
+                <button class="btn btn-warning voltar" onClick="history.go(-1)">Voltar</button>
+			</div>
+                <div class="col-md-4">
+                    <label for="">Especialidade *</label>
+  		
+                    <select class="form-control" name="especialidade" id="especialidade">
+                        <option value="default">Escolher especialidade</option>
+						<option value="Prótese Dental">Prótese Dental</option>
+						<option value="Odontopediatria">Odontopediatria</option>
+						<option value="Endodontia">Endodontia</option>
+						<option value="Ortodontia">Ortodontia</option>
+						
+					</select>
+	           </div>
+                    <div class="col-md-3">
+                    <label for="">Médico *</label>
+  		            
+                    <select class="form-control" name="medico" id="medico">
+                        <option value="default">Escolher médico</option>
+						<option value="Ana Paula">Ana Paula</option>
+						<option value="Mateus Nóbrega">Mateus Nóbrega</option>
+						<option value="Bertonni Paz">Bertonni Paz</option>
+						
+						
+					</select>
+                
+				</div>
 				<div class="col-md-3">
 					<label for="data_consulta">Data *</label>
   					<input type="date" class="form-control" id="data_consulta" name="data_consulta" required>
@@ -38,18 +73,28 @@ if(isLogged()) {
 						<option value="11:30">11:30</option>
 						<option value="12:00">12:00</option>
 						<option value="12:30">12:30</option>
+						<option value="13:00">13:00</option>
+						<option value="13:30">13:30</option>
+						<option value="14:00">14:00</option>
+						<option value="14:30">14:30</option>
+						<option value="15:00">15:00</option>
+						<option value="15:30">15:30</option>
+						<option value="16:00">16:00</option>
+						<option value="16:30">16:30</option>
+						<option value="17:00">17:00</option>
 					</select>
+                    
 				</div>
-				<div class="col-md-4">
+				<div class="col-md-2">
   					<input type="hidden" class="form-control" name="id" value="<?= $idPaciente ?>">
 				</div>
 				<div class="col-md-12">
 					<button type="submit" class="btn btn-primary" title="Enviar">Enviar</button>
 					<button type="reset" class="btn btn-default" title="Limpar">Limpar</button>
 				</div>
-			</form>
-		</div>
-	</div>
+                </div>
+					
+			
 <?php
 } else {
 ?>

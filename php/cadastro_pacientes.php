@@ -28,6 +28,10 @@ jQuery(function($) {
 .col-md-12, .user {
 	margin-top: 10px;
 }
+.voltar {
+	margin-bottom: 10px;
+	float: right;
+}
 </style>
 <?php
 // Checa se o usuário está logado (Só usuários cadastrados e devidamente autenticados podem ter acesso ao cadastro de pacientes)
@@ -38,10 +42,13 @@ if(isLogged()) {
 	<div class="container theme-showcase" role="main">
 		<div id="cadastro_pac" class="page-header">
 			<h1>Cadastro de Pacientes</h1>
-			<p>Os Campos com <font color="#ce1414"> * </font>são obrigatorios</p>
+			<p>Os Campos com <font color="#ce1414"> * </font>são obrigatórios</p>
 		</div>
 		<div class="row">
 			<form method="POST" action="validar_pac.php">
+				<div class="col-md-12">
+	                <button class="btn btn-warning voltar" onClick="history.go(-1)">Voltar</button>
+				</div>
 				<div class="col-md-6">
 					<label for="nome">Nome *</label>
 					<input type="text" class="form-control maiuscula" id="nome" name="nome" required placeholder="Digite o nome">
@@ -78,9 +85,6 @@ if(isLogged()) {
 				<div class="col-md-12">
 					<button type="submit" class="btn btn-primary" title="Enviar">Enviar</button>
 					<button type="reset" class="btn btn-default" title="Limpar">Limpar</button>
-                    
-                    <img src="../imagens/botao_voltar.png" alt="Voltar para página anterior">
-                    <a href = "home.php"><img src = botao_voltar.png"></a>
 				</div>
 			</form>
 		</div>

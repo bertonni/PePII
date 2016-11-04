@@ -22,6 +22,17 @@ $array = mysqli_fetch_array($result);
 .marcar {
 	float: left;
 }
+.voltar {
+	margin-bottom: 10px;
+	float: right;
+}
+.marcar {
+	color: white;
+}
+.marcar:hover {
+	text-decoration: none;
+	color: white;
+}
 </style>
 <?php
 if(isLogged()) {
@@ -33,6 +44,9 @@ if(isLogged()) {
 				<h1>Dados do Paciente</h1>
 			</div>
 			<div class="row">
+			<button class="btn btn-warning voltar" onClick="history.go(-2)">Voltar</button>
+			<button class="btn btn-success"><a href="consulta.php?id=<?= $id ?>" class="marcar">Marcar Consulta</a></button>
+			<br></br>
 				<!-- Passando o id do paciente pelo método GET para as páginas de edição de dados e marcação de consultas -->
 				
 				<table class='table table-striped table-bordered'>
@@ -75,8 +89,6 @@ if(isLogged()) {
 			<div id="cadastro_pac" class="page-header">
 				<h1>Histórico de Consultas</h1>
 			</div>
-			<a href="consulta.php?id=<?= $id ?>" class="marcar">Marcar Consulta</a>
-			<br></br>
 			<div class="row">
 				<?php
 				/*Consulta para buscar todas as consultas do paciente, cujo id foi recebido pelo método GET no início do arquivo, em ordem
@@ -89,6 +101,8 @@ if(isLogged()) {
 						<th>Data</th>
 						<th>Hora</th>
 						<th>Funcionário</th>
+						<th>Médico</th>
+						<th>Especialidade</th>
 						<th>Situação</th>
 					</tr>
 					<?php	
@@ -97,6 +111,8 @@ if(isLogged()) {
 			while($consultas = mysqli_fetch_array($result)) {
 				$id_consulta = $consultas['agd_id'];
 				$id_func = $consultas['agd_fun_id'];
+				$medico = $consultas['agd_medico'];
+				$especialidade = $consultas['agd_especialidade'];
 				$sql = "SELECT fun_usuario FROM funcionarios WHERE fun_id = '$id_func'";
 				$resultado = mysqli_query($connection, $sql);
 				$arr = mysqli_fetch_array($resultado);
@@ -106,6 +122,8 @@ if(isLogged()) {
 					<td class='td_one'><?= date_format(new DateTime($consultas['agd_data']), "d/m/Y") ?></td>
 					<td><?= $consultas['agd_hora'] ?></td>
 					<td><?= $funcionario ?></td>
+					<td><?= $medico ?></td>
+					<td><?= $especialidade ?></td>
 					<td><?= $consultas['agd_status'] ?><a class='status' href='editar_status_consulta.php?id=<?= $id ?>&consulta=<?= $id_consulta ?>'>alterar</a></td>
 				</tr>
 				<?php

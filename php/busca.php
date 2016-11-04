@@ -32,6 +32,7 @@ connectDataBase();
 			<input type="text" class="form-control" name="texto" placeholder="Digite o nome do paciente que deseja encontrar" size="45">
 				</div>
 				<button type="submit" class="btn btn-default">Procurar</button>
+               <button class="btn btn-warning voltar" onClick="history.go(-1)">Voltar</button>
 			</form>
 			<?php
 		}
