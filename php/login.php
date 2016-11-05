@@ -1,22 +1,7 @@
+
 <?php
 require_once 'cabecalho.php';
 ?>
-<style type="text/css">
-	.erro {
-		color: red;
-		margin-left: 13%;
-	}
-	.form-signin-heading {
-		color: gray;
-		margin-left: 10%;
-	}
-	.form-control {
-		border-radius: 0;
-    }
-    .user {
-        margin-bottom: 5px;
-    }
-</style>
 <title>Login</title>
 
 <div class="container">

@@ -1,13 +1,9 @@
+
 <?php
 require_once 'cabecalho.php';
 // Chamada da função que faz a conexão com o banco de dados
 connectDataBase();
 ?>
-<style type="text/css">
-	.navbar-form {
-		padding-left: 0;
-	}
-</style>
 <div class='container marketing'>
 	<div class='container theme-showcase' role='main'>
 		<div id='cadastro_pac' class='page-header'>

@@ -1,21 +1,9 @@
+
  <?php
 require_once 'cabecalho.php';
 // Salva o id do paciente passado pelo método GET
 $idPaciente = $_GET['id'];
-?>
-<style type="text/css">
-	.col-md-12, .user {
-		margin-top: 10px;
-	}
-    .hidden {
-        visibility: hidden;
-    }
-    .voltar {
-		margin-bottom: 10px;
-		float: right;
-	}
-</style>
-<?php
+
 if(isLogged()) {
 ?>
 <title>Marcação de Consulta</title>
@@ -32,28 +20,26 @@ if(isLogged()) {
 			</div>
                 <div class="col-md-4">
                     <label for="">Especialidade *</label>
-  		
+
                     <select class="form-control" name="especialidade" id="especialidade">
                         <option value="default">Escolher especialidade</option>
 						<option value="Prótese Dental">Prótese Dental</option>
 						<option value="Odontopediatria">Odontopediatria</option>
 						<option value="Endodontia">Endodontia</option>
 						<option value="Ortodontia">Ortodontia</option>
-						
+
 					</select>
 	           </div>
                     <div class="col-md-3">
                     <label for="">Médico *</label>
-  		            
+
                     <select class="form-control" name="medico" id="medico">
                         <option value="default">Escolher médico</option>
 						<option value="Ana Paula">Ana Paula</option>
 						<option value="Mateus Nóbrega">Mateus Nóbrega</option>
 						<option value="Bertonni Paz">Bertonni Paz</option>
-						
-						
 					</select>
-                
+
 				</div>
 				<div class="col-md-3">
 					<label for="data_consulta">Data *</label>
@@ -83,7 +69,7 @@ if(isLogged()) {
 						<option value="16:30">16:30</option>
 						<option value="17:00">17:00</option>
 					</select>
-                    
+
 				</div>
 				<div class="col-md-2">
   					<input type="hidden" class="form-control" name="id" value="<?= $idPaciente ?>">
@@ -93,8 +79,8 @@ if(isLogged()) {
 					<button type="reset" class="btn btn-default" title="Limpar">Limpar</button>
 				</div>
                 </div>
-					
-			
+
+
 <?php
 } else {
 ?>

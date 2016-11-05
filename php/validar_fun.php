@@ -1,3 +1,4 @@
+
 <?php
 require_once 'cabecalho.php';
 //Conexão com o banco de dados
@@ -17,8 +18,9 @@ $sql = "INSERT INTO `funcionarios` (`fun_nome`, `fun_data_nasc`, `fun_usuario`, 
 if(mysqli_query($connection, $sql)) {
     echo "<div class='container marketing'>
             <div class='container theme-showcase' role='main'>
-                <h3>Funcionário cadastrado com sucesso!!</h3><br>
-                <a href='cadastro_funcionarios.php'>Voltar à página de cadastro</a>
+                <h2>Funcionário cadastrado com sucesso!!</h2><br>
+                <button class='btn btn-warning voltar' onClick='history.go(-1)'>Voltar</button>
+                <button class='btn btn-primary voltar' onClick='history.go(-2)'>Ir à Página Inicial</button>
             </div>
           </div>
     ";

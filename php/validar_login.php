@@ -1,3 +1,4 @@
+
 <?php
 require_once 'cabecalho.php';
 // Conexão com o banco de dados
@@ -24,7 +25,7 @@ $role = $result['fun_role'];
 
 // Se o número de linhas retornadas da consulta for diferente de zero, ou seja, se os dados digitados no formulário de login batem com os
 // dados cadastrados no banco, vai tirar da sessão a variável '$_SESSION['login_incorreto']' e vai checar se a variável de sessão que salva
-// o nome do funcionário está setada. Se não estiver, seta a variável e o valor dela é atribuído como o nome de usuário do funcionário que 
+// o nome do funcionário está setada. Se não estiver, seta a variável e o valor dela é atribuído como o nome de usuário do funcionário que
 // está fazendo o login
 if($rows != 0) {
     unset($_SESSION['login_incorreto']);

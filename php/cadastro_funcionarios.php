@@ -1,20 +1,14 @@
+
 <?php
 require_once 'cabecalho.php';
-?>
-<style type="text/css">
-.col-md-12, .user {
-	margin-top: 10px;
-}
-.voltar {
-	margin-bottom: 10px;
-	float: right;
-}
-</style>
-<?php
+
 // Checa se o usuário está logado e se é o Administrador do Sistema
 // Se sim, permite o acesso ao cadastro de funcionários
 if(isLogged() && isAdmin()) {
 ?>
+<script type="text/javascript">
+    document.form_fun.reset();
+</script>
 <title>Cadastro de Funcionários</title>
 <div class="container marketing">
 	<div class="container theme-showcase" role="main">
@@ -23,7 +17,7 @@ if(isLogged() && isAdmin()) {
 				<p>Os Campos com <font color="#ce1414"> * </font>são obrigatórios</p>
 		</div>
 		<div class="row">
-			<form method="POST" action="validar_fun.php">
+			<form method="POST" name="form_fun" action="validar_fun.php">
 				<div class="col-md-12">
 	                <button class="btn btn-warning voltar" onClick="history.go(-1)">Voltar</button>
 				</div>

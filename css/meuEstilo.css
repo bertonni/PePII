@@ -1,0 +1,75 @@
+.td_one {
+    width: 25%;
+}
+.edit, .status {
+    float: right;
+}
+.marcar {
+    float: left;
+    color: white;
+}
+.marcar:hover {
+    text-decoration: none;
+    color: white;
+}
+.voltar {
+    margin-bottom: 10px;
+    float: right;
+    margin-left: 5px;
+}
+.editar {
+    float: right;
+    /*margin-right: 5px;*/
+}
+.navbar-form {
+    padding-left: 0;
+}
+.col-md-12, .user {
+    margin-top: 10px;
+}
+.list_item:hover {
+    background-color: #e7e7e7;
+}
+.page-header {
+    margin-top: 10px;
+}
+.ancor:hover {
+    text-decoration: none;
+}
+.add_user {
+    float: left;
+    margin-left: 22%;
+    margin-top: 9%;
+}
+.search_user {
+    margin-left: 52%;
+    margin-top: 10.93%;
+}
+h3 {
+    margin-left: 6%;
+}
+.erro {
+    color: red;
+    margin-left: 13%;
+}
+.form-signin-heading {
+    color: gray;
+    margin-left: 10%;
+}
+.form-control {
+    border-radius: 0;
+}
+.user {
+    margin-bottom: 5px;
+}
+.hidden {
+    visibility: hidden;
+}
+.td_one {
+    width: 25%;
+}
+.alterar {
+    color: white;
+    padding: 2px 5px;
+    float: right;
+}

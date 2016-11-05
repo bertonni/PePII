@@ -1,3 +1,4 @@
+
 <?php
 require_once 'cabecalho.php';
 // Conexão com o banco de dados
@@ -38,7 +39,7 @@ if($rows == 0) {
 	    echo "<div class='container marketing'>
 	            <div class='container theme-showcase' role='main'>
 	                <h3>Consulta do(a) senhor(a) " . $paciente . " foi marcada com sucesso!!</h3><br>
-	                <a href='paciente.php?id=" . $idPaciente . "'>Voltar à página do paciente</a>
+	                <button class='btn btn-warning voltar' onClick='history.go(-1)'>Voltar</button>
 	            </div>
 	          </div>
 	    ";
@@ -50,7 +51,7 @@ if($rows == 0) {
 	echo "<div class='container marketing'>
 	            <div class='container theme-showcase' role='main'>
 	                <h3>Já existe uma consulta marcada para a data e horário desejados.<br> Por favor, selecione outra data ou horário!!</h3><br>
-	                <a href='consulta.php?id=" . $idPaciente . "'>Voltar à página de marcação de consulta</a>
+	                <button class='btn btn-warning voltar' onClick='history.go(-1)'>Voltar</button>
 	            </div>
 	      </div>
 	    ";

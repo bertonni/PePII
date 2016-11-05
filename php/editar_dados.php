@@ -1,3 +1,4 @@
+
 <?php
 require_once 'cabecalho.php';
 // Conexão com o banco de dados
@@ -11,34 +12,7 @@ $sql = "SELECT * FROM pacientes WHERE pac_id = '$id'";
 $result = mysqli_query($connection, $sql);
 // Salva os dados do paciente num array associativo(Os índices são as colunas da tabela paciente e os valores são os valores salvos no banco)
 $array = mysqli_fetch_array($result);
-?>
-<style type="text/css">
-.td_one {
-	width: 25%;
-}
-.edit, .status {
-	float: right;
-}
-.marcar {
-	float: left;
-}
-.voltar {
-	margin-bottom: 10px;
-	float: right;
-}
-.editar {
-	float: right;
-	margin-right: 5px;
-}
-.marcar {
-	color: white;
-}
-.marcar:hover {
-	text-decoration: none;
-	color: white;
-}
-</style>
-<?php
+
 if(isLogged()) {
 	?>
 	<title>Dados do Paciente</title>
@@ -50,11 +24,11 @@ if(isLogged()) {
 			<div class="row">
 			<button class="btn btn-danger voltar" onClick="history.go(-1)">Cancelar</button>
 			<form action="validar_edicao_pac.php" method="POST">
-				
+
 			<button class="btn btn-primary editar" type="submit">Salvar</a></button>
 			<br></br>
 				<!-- Passando o id do paciente pelo método GET para as páginas de edição de dados e marcação de consultas -->
-				
+
 				<table class='table table-striped table-bordered'>
 					<tr>
 						<td class='td_one'><b>Nome</b></td>

@@ -1,3 +1,4 @@
+
 <?php
 // iniciando a sessão
 session_start();
@@ -9,7 +10,7 @@ function connectDataBase() {
   global $connection;
   $servername = "localhost";
   $username ="root";
-  $password ="";
+  $password ="root";
   $dbname = "sistema_de_cadastro";
 
   $connection = mysqli_connect($servername, $username, $password, $dbname);
@@ -55,16 +56,9 @@ function logout() {
     <!-- Bootstrap core CSS -->
     <link href="../css/bootstrap.min.css" rel="stylesheet">
     <link href="../css/signin.css" rel="stylesheet">
+    <link href="../css/meuEstilo.css" rel="stylesheet">
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
     <link href="../css/ie10-viewport-bug-workaround.css" rel="stylesheet">
-    <style>
-      .list_item:hover {
-         background-color: #e7e7e7;
-      }
-      .page-header {
-        margin-top: 10px;
-      }
-    </style>
 </head>
 <body>
 	<nav class="navbar navbar-default">

@@ -1,23 +1,7 @@
+
 <?php
 require_once 'cabecalho.php';
 ?>
-<style type="text/css">
-    .ancor:hover {
-        text-decoration: none;
-    }
-    .add_user {
-        float: left;
-        margin-left: 22%;
-        margin-top: 9%;
-    }
-    .search_user {
-        margin-left: 52%;
-        margin-top: 10.93%;
-    }
-    h3 {
-        margin-left: 6%;
-    }
-</style>
 <title>Home</title>
 
 <div class="container">

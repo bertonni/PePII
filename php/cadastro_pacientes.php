@@ -1,3 +1,4 @@
+
 <?php
 require_once 'cabecalho.php';
 connectDataBase();
@@ -22,17 +23,8 @@ jQuery(function($) {
 	$("#cpf").mask("999.999.999-99");
 	$("#rg").mask("99.999.99?9");
 });
-
+document.form_pac.reset();
 </script>
-<style type="text/css">
-.col-md-12, .user {
-	margin-top: 10px;
-}
-.voltar {
-	margin-bottom: 10px;
-	float: right;
-}
-</style>
 <?php
 // Checa se o usuário está logado (Só usuários cadastrados e devidamente autenticados podem ter acesso ao cadastro de pacientes)
 if(isLogged()) {
@@ -45,7 +37,7 @@ if(isLogged()) {
 			<p>Os Campos com <font color="#ce1414"> * </font>são obrigatórios</p>
 		</div>
 		<div class="row">
-			<form method="POST" action="validar_pac.php">
+			<form method="POST" name="form_pac" action="validar_pac.php">
 				<div class="col-md-12">
 	                <button class="btn btn-warning voltar" onClick="history.go(-1)">Voltar</button>
 				</div>

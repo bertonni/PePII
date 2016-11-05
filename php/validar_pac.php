@@ -1,3 +1,4 @@
+
 <?php
 require_once 'cabecalho.php';
 // Conexão com o banco de dados
@@ -23,9 +24,9 @@ $sql = "INSERT INTO `pacientes` (`pac_nome`, `pac_endereco`, `pac_rg`, `pac_cpf`
 if(mysqli_query($connection, $sql)) {
 	echo "<div class='container marketing'>
 			<div class='container theme-showcase' role='main'>
-				<h3>Paciente cadastrado com sucesso!!</h3><br>
-				<a href='cadastro_pacientes.php'>Voltar à página de cadastro</a><br>
-				<a href='home.php'>Voltar à página principal</a>
+				<h2>Paciente cadastrado com sucesso!!</h2><br>
+				<button class='btn btn-warning voltar' onClick='history.go(-1)'>Voltar</button>
+				<button class='btn btn-primary voltar' onClick='history.go(-2)'>Ir à Página Inicial</button>
 		  	</div>
 		  </div>
 	";
