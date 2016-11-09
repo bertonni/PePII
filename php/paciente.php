@@ -112,8 +112,8 @@ if(isLogged()) {
 				<?php
 			}
 		} else {
+			// Se não tiver consultas marcadas para o paciente, exibe uma mensagem ao invés de não exibir nada ou uma tabela vazia
 		echo	"
-
 					<div id='cadastro' class='page-header'>
 						<h2>Não há consultas marcadas para esse paciente</h2>
 					</div>
