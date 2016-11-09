@@ -1,4 +1,5 @@
 
+
 <?php
 // iniciando a sessão
 session_start();
@@ -112,7 +113,16 @@ function logout() {
         <li><a href="#">
           <?php
           // mensagem de boas-vindas ao usuário logado
-          echo "Bem vindo(a), <b>" . $_SESSION['usuario'] . "</b>!!";
+          $hr = date(" H ");
+
+          if($hr >= 12 && $hr < 18) {
+            $resp = "Boa tarde";
+          } else if ($hr >= 0 && $hr < 12){
+            $resp = "Bom dia";
+          } else {
+            $resp = "Boa noite";
+          }
+          echo $resp . ", <b>" . $_SESSION['usuario'] . "</b>!!";
           ?>
           </a>
           </li>

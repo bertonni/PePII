@@ -1,4 +1,5 @@
 
+
  <?php
 require_once 'cabecalho.php';
 // Salva o id do paciente passado pelo método GET
@@ -87,7 +88,7 @@ if(isLogged()) {
 <div class="container marketing">
     <div class="container theme-showcase" role="main">
         <div id="cadastro" class="page-header">
-            <h3>Por favor, faça o login para marcar uma consulta</h3>
+            <h2>Por favor, faça o login para marcar uma consulta</h2>
         </div>
     </div>
 <?php

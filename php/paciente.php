@@ -1,4 +1,5 @@
 
+
 <?php
 require_once 'cabecalho.php';
 // Conexão com o banco de dados
@@ -22,9 +23,9 @@ if(isLogged()) {
 				<h1>Dados do Paciente</h1>
 			</div>
 			<div class="row">
-				<button class="btn btn-warning voltar" onClick="history.go(-2)">Voltar</button>
-				<button class="btn btn-success"><a href="consulta.php?id=<?= $id ?>" class="marcar">Marcar Consulta</a></button>
-				<button class="btn btn-primary editar"><a href="editar_dados.php?id=<?= $id ?>" class="marcar">Editar Dados</a></button>
+				<a href="busca.php" class="btn btn-warning voltar">Voltar</a>
+				<a href="consulta.php?id=<?= $id ?>" class="btn btn-success marcar">Marcar Consulta</a>
+				<a href="editar_dados.php?id=<?= $id ?>" class="btn btn-primary editar">Editar Dados</a>
 			</br></br>
 			<!-- Passando o id do paciente pelo método GET para as páginas de edição de dados e marcação de consultas -->
 			<table class='table table-striped table-bordered'>
@@ -62,26 +63,29 @@ if(isLogged()) {
 				</tr>
 			</table>
 		</div>
-		<div id="cadastro_pac" class="page-header">
-			<h1>Histórico de Consultas</h1>
-		</div>
-		<div class="row">
-			<?php
-				/*Consulta para buscar todas as consultas do paciente, cujo id foi recebido pelo método GET no início do arquivo, em ordem
-				crescente de data*/
-				$sql = "SELECT * FROM agendamentos WHERE agd_pac_id = '$id' ORDER BY agd_data ASC";
-				$result = mysqli_query($connection, $sql);
+		<?php
+			/*Consulta para buscar todas as consultas do paciente, cujo id foi recebido pelo método GET no início do arquivo, em ordem
+			crescente de data*/
+			$sql = "SELECT * FROM agendamentos WHERE agd_pac_id = '$id' ORDER BY agd_data ASC";
+			$result = mysqli_query($connection, $sql);
+			$rows = mysqli_num_rows($result);
+
+			if($rows != 0) {
 				?>
-				<table class='table table-striped table-bordered'>
-					<tr>
-						<th>Data</th>
-						<th>Hora</th>
-						<th>Funcionário</th>
-						<th>Médico</th>
-						<th>Especialidade</th>
-						<th>Situação</th>
-					</tr>
-					<?php
+				<div id="cadastro_pac" class="page-header">
+					<h1>Histórico de Consultas</h1>
+				</div>
+				<div class="row">
+					<table class='table table-striped table-bordered'>
+						<tr>
+							<th>Data</th>
+							<th>Hora</th>
+							<th>Funcionário</th>
+							<th>Médico</th>
+							<th>Especialidade</th>
+							<th>Situação</th>
+						</tr>
+						<?php
 			/*Enquanto houver dados no array associativo '$consultas', salva os valores em variáveis, realiza a consulta
 			para saber o nome do funcionário que realizou o agendamento e exibe-os na tabela*/
 			while($consultas = mysqli_fetch_array($result)) {
@@ -101,15 +105,23 @@ if(isLogged()) {
 					<td><?= $medico ?></td>
 					<td><?= $especialidade ?></td>
 					<td>
-					<?= $consultas['agd_status'] ?>
-					<button class="btn btn-primary alterar"><a class='marcar' href='editar_status_consulta.php?id=<?= $id ?>&consulta=<?= $id_consulta ?>'>Alterar</a></button>
+						<?= $consultas['agd_status'] ?>
+						<a class='btn btn-primary alterar marcar' href='editar_status_consulta.php?id=<?= $id ?>&consulta=<?= $id_consulta ?>'>Alterar</a>
 					</td>
 				</tr>
 				<?php
 			}
-			?>
-		</table>
-	</div>
+		} else {
+		echo	"
+
+					<div id='cadastro' class='page-header'>
+						<h2>Não há consultas marcadas para esse paciente</h2>
+					</div>
+				";
+		}
+		?>
+	</table>
+</div>
 </div>
 <br>
 <br>
@@ -119,7 +131,7 @@ if(isLogged()) {
 	<div class="container marketing">
 		<div class="container theme-showcase" role="main">
 			<div id="cadastro" class="page-header">
-				<h3>Por favor, faça o login para visualizar os dados do paciente</h3>
+				<h2>Por favor, faça o login para visualizar os dados do paciente</h2>
 			</div>
 		</div>
 		<?php

@@ -1,4 +1,5 @@
 
+
 <?php
 ob_start();
 /*Esta página é praticamente igual à página paciente.php, a diferença básica entre elas é que, ao invéns de apenas exibir os dados,
@@ -30,9 +31,8 @@ if(isLogged()) {
 				<h1>Dados do Paciente</h1>
 			</div>
 			<div class="row">
-				<button class="btn btn-warning voltar" onClick="history.go(-1)">Voltar</button>
-				<!-- <button class="btn btn-success"><a href="consulta.php?id=<?= $id ?>" class="marcar">Marcar Consulta</a></button> -->
-				<button class="btn btn-primary editar"><a href="editar_dados.php?id=<?= $id ?>" class="marcar">Editar Dados</a></button>
+				<a href="busca.php" class="btn btn-warning voltar">Voltar</a>
+				<a href="editar_dados.php?id=<?= $id ?>" class="btn btn-primary marcar">Editar Dados</a>
 			</br></br>
 			<!-- Passando o id do paciente pelo método GET para as páginas de edição de dados e marcação de consultas -->
 			<table class='table table-striped table-bordered'>
@@ -112,7 +112,7 @@ if(isLogged()) {
 						<form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="POST">
 							<td class='td_one'>
 								<?php
-								echo "<input type='text' id='data' name='data_consulta' value='" . date_format(new DateTime($consultas['agd_data']), 'd/m/Y') . "'>";
+								echo "<input type='text' class='form-control' id='data' name='data_consulta' value='" . date_format(new DateTime($consultas['agd_data']), 'd/m/Y') . "'>";
 								?>
 								<td>
 									<select class="form-control" name="hora_consulta" id="hora_consulta">
@@ -200,7 +200,7 @@ if(isLogged()) {
 	<div class="container marketing">
 		<div class="container theme-showcase" role="main">
 			<div id="cadastro" class="page-header">
-				<h3>Por favor, faça o login para alterar a situação da consulta</h3>
+				<h2>Por favor, faça o login para alterar a situação da consulta</h2>
 			</div>
 		</div>
 		<?php

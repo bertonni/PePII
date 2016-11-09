@@ -1,4 +1,5 @@
 
+
 <?php
 require_once 'cabecalho.php';
 //Conexão com o banco de dados
@@ -19,8 +20,8 @@ if(mysqli_query($connection, $sql)) {
     echo "<div class='container marketing'>
             <div class='container theme-showcase' role='main'>
                 <h2>Funcionário cadastrado com sucesso!!</h2><br>
-                <button class='btn btn-warning voltar' onClick='history.go(-1)'>Voltar</button>
-                <button class='btn btn-primary voltar' onClick='history.go(-2)'>Ir à Página Inicial</button>
+                <a href='cadastro_funcionarios.php' class='btn btn-warning voltar'>Voltar</a>
+                <a href='home.php' class='btn btn-primary voltar'>Ir à Página Inicial</a>
             </div>
           </div>
     ";

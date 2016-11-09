@@ -1,4 +1,5 @@
 
+
 <?php
 require_once 'cabecalho.php';
 // Tira da sessão a variável "$_SESSION['usuario'], ou seja, desloga o usuário do sistema"

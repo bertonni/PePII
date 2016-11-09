@@ -1,3 +1,4 @@
+
 <?php
 require_once 'cabecalho.php';
 // Conexão com o banco de dados
@@ -24,7 +25,7 @@ if(isset($_POST['fone2']) && $_POST['fone2'] != ""){
 // Query para inserção dos dados do paciente no banco de dados
 $sql = "UPDATE `pacientes` SET `pac_nome`='$nome',`pac_endereco`='$endereco',`pac_rg`='$rg',`pac_cpf`='$cpf',`pac_email`='$email',`pac_data_nasc`='$nasc',`pac_telefone_1`='$fone1',`pac_telefone_2`='$fone2' WHERE `pac_id`='$id'";
 
-// Se a query foi executada com sucesso, exibe uma mensagem e dois links (um para voltar à página de cadastro e outro para ir à página principal)
+// Se a query foi executada com sucesso, exibe uma mensagem e um link para voltar à página do paciente
 if(mysqli_query($connection, $sql)) {
 	echo "<div class='container marketing'>
 			<div class='container theme-showcase' role='main'>

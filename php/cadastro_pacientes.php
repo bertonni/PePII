@@ -1,4 +1,5 @@
 
+
 <?php
 require_once 'cabecalho.php';
 connectDataBase();
@@ -99,7 +100,7 @@ if(isLogged()) {
 <div class="container marketing">
     <div class="container theme-showcase" role="main">
         <div id="cadastro" class="page-header">
-            <h3>Por favor, faça o login para cadastrar um Paciente</h3>
+            <h2>Por favor, faça o login para cadastrar um Paciente</h2>
         </div>
     </div>
 </div>

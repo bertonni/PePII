@@ -1,4 +1,5 @@
 
+
 <?php
 require_once 'cabecalho.php';
 
@@ -70,7 +71,7 @@ o administrador pode cadastrar funcionários*/
 <div class="container marketing">
     <div class="container theme-showcase" role="main">
         <div id="cadastro" class="page-header">
-            <h3>Apenas o administrador do sistema pode cadastrar um funcionário</h3>
+            <h2>Apenas o administrador do sistema pode cadastrar um funcionário</h2>
         </div>
     </div>
 </div>

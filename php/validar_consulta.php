@@ -1,4 +1,5 @@
 
+
 <?php
 require_once 'cabecalho.php';
 // Conexão com o banco de dados
@@ -19,7 +20,7 @@ $status = "Agendada";
 $medico = $_POST['medico'];
 $especialidade = $_POST['especialidade'];
 
-//Consulta para pegar o nome do paciente que está marcando a consulta para exibir uma mensagem personalizada quando a consulta for concluída
+//Consulta para pegar o nome do paciente que está marcando a consulta para exibir uma mensagem personalizada quando a consulta for marcada
 $sql = "SELECT pac_nome FROM pacientes WHERE pac_id='$idPaciente'";
 $result = mysqli_query($connection, $sql);
 $arr = mysqli_fetch_array($result);
@@ -38,8 +39,8 @@ if($rows == 0) {
 	if(mysqli_query($connection, $sql)) {
 	    echo "<div class='container marketing'>
 	            <div class='container theme-showcase' role='main'>
-	                <h3>Consulta do(a) senhor(a) " . $paciente . " foi marcada com sucesso!!</h3><br>
-	                <button class='btn btn-warning voltar' onClick='history.go(-1)'>Voltar</button>
+	                <h2>Consulta do(a) senhor(a) " . $paciente . " foi marcada com sucesso!!</h2><br>
+	                <a href='paciente.php?id='" . $idPaciente . "' class='btn btn-warning voltar'>Voltar</a>
 	            </div>
 	          </div>
 	    ";
@@ -47,10 +48,10 @@ if($rows == 0) {
 	    echo "Error: " . $sql . "<br>" . mysqli_error($connection);
 	}
 } else {
-	// Se existir um agendamento para a data/hora desejadas, exibe mensgaem de erro!
+	// Se existir um agendamento para a data/hora desejadas, exibe mensagem de erro!
 	echo "<div class='container marketing'>
 	            <div class='container theme-showcase' role='main'>
-	                <h3>Já existe uma consulta marcada para a data e horário desejados.<br> Por favor, selecione outra data ou horário!!</h3><br>
+	                <h2>Já existe uma consulta marcada para a data e horário desejados.<br> Por favor, selecione outra data ou horário!!</h2><br>
 	                <button class='btn btn-warning voltar' onClick='history.go(-1)'>Voltar</button>
 	            </div>
 	      </div>

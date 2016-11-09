@@ -1,4 +1,3 @@
-
 <?php
 require_once 'cabecalho.php';
 // Chamada da função que faz a conexão com o banco de dados
@@ -18,6 +17,7 @@ connectDataBase();
 					<input type='text' class='form-control' name='texto' placeholder='Faça o login para buscar um paciente' size='45'>
 				</div>
 				<button type='submit' class='btn btn-default disabled'>Procurar</button>
+               <a href="home.php" class="btn btn-warning voltar">Voltar</a>
 			</div>
 			<?php
 		// Se estiver logado, o sistema de busca funciona normalmente
@@ -28,7 +28,7 @@ connectDataBase();
 			<input type="text" class="form-control" name="texto" placeholder="Digite o nome do paciente que deseja encontrar" size="45">
 				</div>
 				<button type="submit" class="btn btn-default">Procurar</button>
-               <button class="btn btn-warning voltar" onClick="history.go(-1)">Voltar</button>
+               <a href="home.php" class="btn btn-warning voltar">Voltar</a>
 			</form>
 			<?php
 		}
@@ -38,16 +38,16 @@ connectDataBase();
 <?php
 // Buscando e exibindo o resultado da busca dos pacientes
 
-// Verifica se a variável $_POST['texto'] está setada e o está vazia (se alguem digitou algo no input text e clicou no botão "Procurar")
+// Verifica se a variável $_POST['texto'] está setada e não está vazia (se alguem digitou algo no input text e clicou no botão "Procurar")
 if(isset($_POST['texto']) && $_POST['texto'] != "") {
 	// Salva o conteúdo do input name="texto" na variável $text
 	$text = $_POST['texto'];
 
-	// Utiliza a função para salvar na variável $text apenas letras(maiúsculas e Minúsculas) e números, previnindo a SQL Injection, pois os caracteres especiais serão removidos
+	// Utiliza a função para salvar na variável $text apenas letras(Maiúsculas e/ou Minúsculas) e números, previnindo a SQL Injection, pois os caracteres especiais serão removidos
 	$text = preg_replace('/[^[:alnum:]_]/', '',$text);
 	$text = strtolower($text);
 
-	// SQL para buscar no banco todos os dados do paciente que contenha o texto que foi digitado no input de busca e ordena o resultado por ordem alfabética
+	// SQL para buscar no banco todos os dados do paciente que contenha o texto que foi digitado no input de busca e ordenar o resultado por ordem alfabética
 	$sql = "SELECT * FROM pacientes WHERE lower(pac_nome) like '%$text%' order by pac_nome";
 
 } else {
@@ -66,7 +66,7 @@ if($result && isset($_POST['texto'])) {
 	<div class='container theme-showcase' role='main'>
 	<br>
 	";
-	//  Se o número de linhas retornadas for maior que 1, (foram encontrados resultados)
+	//  Se o número de linhas retornadas for maior que 0, (foram encontrados resultados)
 	if($row != 0) {
 	// Imprime a tabela
 	echo "<table class='table table-striped table-bordered'>
@@ -88,7 +88,7 @@ if($result && isset($_POST['texto'])) {
 			";
 		}
 	} else {
-		echo "<h3>Não foram encontrados resultados para sua busca</h3>";
+		echo "<h2>Não foram encontrados resultados para sua busca</h2>";
 	}
 	echo "</table>
 		</div>
