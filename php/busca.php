@@ -25,7 +25,7 @@ connectDataBase();
 			?>
 			<form class="navbar-form navbar-left" action="busca.php" method="POST">
 			<div class="form-group">
-			<input type="text" class="form-control" name="texto" placeholder="Digite o nome do paciente que deseja encontrar" size="45">
+			<input type="text" class="form-control" name="texto" placeholder="Digite o nome ou cpf do paciente que deseja encontrar" size="45">
 				</div>
 				<button type="submit" class="btn btn-default">Procurar</button>
                <a href="home.php" class="btn btn-warning voltar">Voltar</a>
@@ -48,7 +48,7 @@ if(isset($_POST['texto']) && $_POST['texto'] != "") {
 	$text = strtolower($text);
 
 	// SQL para buscar no banco todos os dados do paciente que contenha o texto que foi digitado no input de busca e ordenar o resultado por ordem alfabética
-	$sql = "SELECT * FROM pacientes WHERE lower(pac_nome) like '%$text%' order by pac_nome";
+	$sql = "SELECT * FROM pacientes WHERE lower(pac_nome) like '%$text%' OR pac_cpf like '%$text%' order by pac_nome";
 
 } else {
 	// Se o usuário clicar no botão "Procurar" sem ter digitado nada no campo, a consulta traz todos os dados de todos os usuários cadastrados no banco por ordem alfabética
