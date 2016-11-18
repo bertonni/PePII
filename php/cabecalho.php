@@ -9,7 +9,7 @@ function connectDataBase() {
   global $connection;
   $servername = "localhost";
   $username ="root";
-  $password ="root";
+  $password ="";
   $dbname = "sistema_de_cadastro";
 
   $connection = mysqli_connect($servername, $username, $password, $dbname);
@@ -58,6 +58,11 @@ function logout() {
     <link href="../css/meuEstilo.css" rel="stylesheet">
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
     <link href="../css/ie10-viewport-bug-workaround.css" rel="stylesheet">
+    <style>
+    	.logo {
+    		padding-top: 0;
+    	}
+    </style>
 </head>
 <body>
 	<nav class="navbar navbar-default">
@@ -70,7 +75,7 @@ function logout() {
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="home.php"><img src="../imagens/logo.png" width="120" height="50"></a>
+      <a class="navbar-brand logo" href="home.php"><img src="../imagens/logo.png" width="120" height="50"></a>
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
