@@ -1,6 +1,9 @@
 
 <?php
 require_once 'cabecalho.php';
+if(isLogged()) {
+	header("location: home.php");
+}
 ?>
 <title>Login</title>
 
