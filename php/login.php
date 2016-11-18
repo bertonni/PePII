@@ -1,4 +1,3 @@
-
 <?php
 require_once 'cabecalho.php';
 if(isLogged()) {

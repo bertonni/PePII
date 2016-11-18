@@ -1,5 +1,3 @@
-
-
     <footer>
         <!-- <p class="pull-right"><a href="../index.php">Voltar à página principal</a></p> -->
         <!-- <p>&copy; 2005 Pelada do Amigão.</p> -->

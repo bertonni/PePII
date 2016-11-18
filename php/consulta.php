@@ -1,6 +1,4 @@
-
-
- <?php
+<?php
 require_once 'cabecalho.php';
 // Salva o id do paciente passado pelo método GET
 $idPaciente = $_GET['id'];

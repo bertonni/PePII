@@ -1,5 +1,3 @@
-
-
 <?php
 require_once 'cabecalho.php';
 //Conexão com o banco de dados
