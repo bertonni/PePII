@@ -70,13 +70,13 @@ function logout() {
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="home.php">Odonto System</a>
+      <a class="navbar-brand" href="home.php"><img src="../imagens/logo.png" width="120" height="50"></a>
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
-        <li class="list_item"><a href="home.php">Página Inicial</a></li>
+       <!-- <li class="list_item"><a href="home.php">Página Inicial</a></li>-->
         <!-- <li><a href="#">Link</a></li> -->
         <?php
         if(isLogged() && isAdmin()) {
