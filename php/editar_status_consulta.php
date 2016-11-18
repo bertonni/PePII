@@ -1,5 +1,3 @@
-
-
 <?php
 ob_start();
 /*Esta página é praticamente igual à página paciente.php, a diferença básica entre elas é que, ao invéns de apenas exibir os dados,
@@ -7,11 +5,19 @@ vai haver um select no campo "Situação" na tabela das consultas, onde vai ser 
 require_once 'cabecalho.php';
 // Conexão com o banco de dados
 connectDataBase();
-
+if(isset($_SESSION['erroConsulta']) && $_SESSION['erroConsulta']) {
+?>
+<script>
+	alert("Já existe uma consulta marcada para esse horário. Por favor, agende para outro dia/horário!");
+	$('#data').focus();
+</script>
+<?php
+}
 // Salva o ID do paciente e ID da consulta, passados pelo método GET na página anterior
-$id = $_GET['id'];
-$id_consulta = $_GET['consulta'];
-
+if(isset($_GET['id']) && isset($_GET['consulta'])) {
+	$id = $_GET['id'];
+	$id_consulta = $_GET['consulta'];
+}
 $sql = "SELECT * FROM pacientes WHERE pac_id = '$id'";
 $result = mysqli_query($connection, $sql);
 $array = mysqli_fetch_array($result);
@@ -220,36 +226,54 @@ if(isLogged()) {
 			<?php
 		}
 // Se clicou no botão "Salvar"
-		if(isset($_POST['salvar'])) {
+if(isset($_POST['salvar'])) {
 // Salva o novo status, ID da consulta e ID do paciente em variáveis
-			$status = $_POST['status'];
-			$medico = $_POST['medico'];
-			$data = $_POST['data_consulta'];
-			$hora = $_POST['hora_consulta'];
-			$date = explode("/", $data);
-			$dia = $date[0];
-			$mes = $date[1];
-			$ano = $date[2];
-			$date = $ano . "-" . $mes . "-" . $dia;
-			$especialidade = $_POST['especialidade'];
-			$id_consulta = $_POST['id_consulta'];
-			$id_paciente = $_POST['id_paciente'];
+	$status = $_POST['status'];
+	$medico = $_POST['medico'];
+	$data = $_POST['data_consulta'];
+	$hora = $_POST['hora_consulta'];
+	$date = explode("/", $data);
+	$dia = $date[0];
+	$mes = $date[1];
+	$ano = $date[2];
+	$date = $ano . "-" . $mes . "-" . $dia;
+	$especialidade = $_POST['especialidade'];
+	$id_consulta = $_POST['id_consulta'];
+	$id_paciente = $_POST['id_paciente'];
 
-// Query para alterar o status da consulta desejada
-			$sql = "UPDATE `agendamentos` SET `agd_data`='$date', `agd_hora`='$hora', `agd_status`='$status', `agd_medico`='$medico', `agd_especialidade`='$especialidade' WHERE agd_id='$id_consulta'";
+	// Consulta para saber se já existe um agendamento para a data/hora pretendida
+	$sql = "SELECT * FROM agendamentos WHERE agd_data = '$date' AND agd_hora = '$hora' AND agd_pac_id = '$id_paciente'";
+	$result = mysqli_query($connection, $sql);
+	$rows1 = mysqli_num_rows($result);
 
-// Se alterado com sucesso, redireciona para a página do paciente
-			if(mysqli_query($connection, $sql)) {
-				header("location: paciente.php?id=" . $id_paciente . "");
-			} else {
-				echo "Error: " . $sql . "<br>" . mysqli_error($connection);
-			}
+	$sql = "SELECT * FROM agendamentos WHERE agd_data = '$date' AND agd_hora = '$hora' AND agd_medico = '$medico'";
+	$result = mysqli_query($connection, $sql);
+	$rows2 = mysqli_num_rows($result);
 
-		} else if(isset($_POST['cancelar'])) {
-			$id_paciente = $_POST['id_paciente'];
-			header("location: paciente.php?id=" . $id_paciente . "");
+	if($rows1 == 0 && $row2 == 0) {
+		unset($_SESSION['erroConsulta']);
+	// Query para alterar o status da consulta desejada
+		$sql = "UPDATE `agendamentos` SET `agd_data`='$date', `agd_hora`='$hora', `agd_status`='$status', `agd_medico`='$medico', `agd_especialidade`='$especialidade' WHERE agd_id='$id_consulta'";
+	// Se alterado com sucesso, redireciona para a página do paciente
+		if(mysqli_query($connection, $sql)) {
+			header("location: paciente.php?id=" . $id_paciente);
+		} else {
+			echo "Error: " . $sql . "<br>" . mysqli_error($connection);
 		}
-		disconnectDataBase();
-		require_once 'rodape.php';
-		ob_end_flush();
-		?>
+	} else {
+		if(!isset($_SESSION['erroConsulta'])) {
+			$_SESSION['erroConsulta'] = true;
+			$_SESSION['idConsulta'] = $id_consulta;
+			$_SESSION['idPaciente'] = $id_paciente;
+		}
+		header("location: paciente.php?id=" . $id_paciente);
+	}
+} else if(isset($_POST['cancelar'])) {
+	unset($_SESSION['erroConsulta']);
+	$id_paciente = $_POST['id_paciente'];
+	header("location: paciente.php?id=" . $id_paciente);
+}
+disconnectDataBase();
+require_once 'rodape.php';
+ob_end_flush();
+?>

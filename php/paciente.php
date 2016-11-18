@@ -1,5 +1,3 @@
-
-
 <?php
 require_once 'cabecalho.php';
 // Conexão com o banco de dados
@@ -15,6 +13,9 @@ $result = mysqli_query($connection, $sql);
 $array = mysqli_fetch_array($result);
 
 if(isLogged()) {
+	if(isset($_SESSION['erroConsulta']) && $_SESSION['erroConsulta']) {
+		header("location: editar_status_consulta.php?id=" .$_SESSION['idPaciente'] . "&consulta=" .$_SESSION['idConsulta']);
+	}
 	?>
 	<title>Dados do Paciente</title>
 	<div class="container marketing">
@@ -24,8 +25,8 @@ if(isLogged()) {
 			</div>
 			<div class="row">
 				<a href="busca.php" class="btn btn-warning voltar">Voltar</a>
-				<a href="consulta.php?id=<?= $id ?>" class="btn btn-success marcar">Marcar Consulta</a>
-				<a href="editar_dados.php?id=<?= $id ?>" class="btn btn-primary editar">Editar Dados</a>
+				<a href="consulta.php?id=<?=$id?>" class="btn btn-success marcar">Marcar Consulta</a>
+				<a href="editar_dados.php?id=<?=$id?>" class="btn btn-primary editar">Editar Dados</a>
 			</br></br>
 			<!-- Passando o id do paciente pelo método GET para as páginas de edição de dados e marcação de consultas -->
 			<table class='table table-striped table-bordered'>
@@ -106,7 +107,7 @@ if(isLogged()) {
 					<td><?= $especialidade ?></td>
 					<td>
 						<?= $consultas['agd_status'] ?>
-						<a class='btn btn-primary alterar marcar' href='editar_status_consulta.php?id=<?= $id ?>&consulta=<?= $id_consulta ?>'>Alterar</a>
+						<a class='btn btn-primary alterar marcar' href='editar_status_consulta.php?id=<?=$id?>&consulta=<?=$id_consulta?>'>Alterar</a>
 					</td>
 				</tr>
 				<?php
@@ -134,8 +135,9 @@ if(isLogged()) {
 				<h2>Por favor, faça o login para visualizar os dados do paciente</h2>
 			</div>
 		</div>
-		<?php
-	}
-	disconnectDataBase();
-	require_once 'rodape.php';
-	?>
+	<?php
+}
+// unset($_SESSION['erroConsulta']);
+disconnectDataBase();
+require_once 'rodape.php';
+?>

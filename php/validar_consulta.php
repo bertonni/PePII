@@ -26,7 +26,7 @@ $arr = mysqli_fetch_array($result);
 $paciente = $arr['pac_nome'];
 
 // Consulta para saber se já existe um agendamento para a data/hora pretendida
-$sql = "SELECT agd_data, agd_hora FROM agendamentos WHERE agd_data = '$data' AND agd_hora = '$hora'";
+$sql = "SELECT * FROM agendamentos WHERE agd_data = '$data' AND agd_hora = '$hora' AND agd_medico = '$medico'";
 $result = mysqli_query($connection, $sql);
 $rows = mysqli_num_rows($result);
 
@@ -49,7 +49,7 @@ if($rows == 0) {
 	// Se existir um agendamento para a data/hora desejadas, exibe mensagem de erro!
 	echo "<div class='container marketing'>
 	            <div class='container theme-showcase' role='main'>
-	                <h2>Já existe uma consulta marcada para a data e horário desejados.<br> Por favor, selecione outra data ou horário!!</h2><br>
+	                <h2>Já existe uma consulta marcada para a data, horário e médico desejados.<br> Por favor, selecione outra data ou horário!!</h2><br>
 	                <button class='btn btn-warning voltar' onClick='history.go(-1)'>Voltar</button>
 	            </div>
 	      </div>
