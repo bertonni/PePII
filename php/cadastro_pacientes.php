@@ -1,5 +1,6 @@
 
 
+
 <?php
 require_once 'cabecalho.php';
 connectDataBase();
@@ -22,7 +23,7 @@ jQuery(function($) {
 	}).trigger('focusout');
 
 	$("#cpf").mask("999.999.999-99");
-	$("#rg").mask("99.999.99?9");
+	// $("#rg").mask("99.999.99?9");
 });
 document.form_pac.reset();
 </script>
@@ -51,27 +52,39 @@ if(isLogged()) {
 					<input type="date" class="form-control" id="nasc" max-lenght="2" name="nasc" required>
 				</div>
 				<div class="col-md-3">
-					<label for="cpf">CPF *</label>
-					<input type="text" class="form-control" id="cpf" name="cpf" required placeholder="Digite o CPF">
+					<label for="cpf">CPF</label>
+					<input type="text" class="form-control" id="cpf" name="cpf" placeholder="Digite o CPF">
 				</div>
 				<div class="col-md-6 user">
 					<label for="endereco">Endereço *</label>
 					<input type="text" class="form-control maiuscula" id="endereco" name="endereco" required placeholder="Digite o endereço">
 				</div>
-				<div class="col-md-3 user">
-					<label for="email">Email *</label>
-					<input type="email" class="form-control" id="email" name="email" required placeholder="Digite o email">
+				<div class="col-md-1 user">
+					<label for="numero">Número</label>
+					<input type="text" class="form-control maiuscula" id="numero" name="numero" placeholder="Número">
+				</div>
+				<div class="col-md-2 user">
+					<label for="bairro">Bairro *</label>
+					<input type="text" class="form-control maiuscula" id="bairro" name="bairro" required placeholder="Digite o bairro">
 				</div>
 				<div class="col-md-3 user">
-					<label for="rg">RG *</label>
-					<input type="text" class="form-control" id="rg" name="rg" required placeholder="Digite o RG">
+					<label for="cidade">Cidade *</label>
+					<input type="text" class="form-control maiuscula" id="cidade" name="cidade" required placeholder="Digite a cidade">
+				</div>
+				<div class="col-md-3 user">
+					<label for="email">Email</label>
+					<input type="email" class="form-control" id="email" name="email" placeholder="Digite o email">
+				</div>
+				<div class="col-md-3 user">
+					<label for="rg">RG</label>
+					<input type="text" class="form-control" id="rg" name="rg" placeholder="Digite o RG">
 				</div>
 
-				<div class="col-md-5 user">
+				<div class="col-md-3 user">
 					<label for="fone1">Telefone 1 *</label>
 					<input type="text" class="form-control" class="telefone" id="fone1" name="fone1" required placeholder="Digite o telefone">
 				</div>
-				<div class="col-md-5 user">
+				<div class="col-md-3 user">
 					<label for="fone2">Telefone 2</label>
 					<input type="text" class="form-control" class="telefone" id="fone2" name="fone2" placeholder="Digite outro telefone">
 				</div>
