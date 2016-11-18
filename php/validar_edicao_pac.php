@@ -6,10 +6,10 @@ connectDataBase();
 
 // Salva os dados preenchidos no formulário em variáveis para inserir no banco de dados
 $id = $_POST['pac_id'];
-$nome = $_POST['nome'];
+$nome = strtoupper($_POST['nome']);
 $rg = $_POST['rg'];
 $cpf = $_POST['cpf'];
-$endereco = $_POST['endereco'];
+$endereco = strtoupper($_POST['endereco']);
 $nasc = explode("/", $_POST['nasc']);
 $dia = $nasc[0];
 $mes = $nasc[1];
