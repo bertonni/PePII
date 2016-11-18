@@ -1,5 +1,3 @@
-
-
 <?php
 require_once 'cabecalho.php';
 // Conexão com o banco de dados
@@ -40,7 +38,7 @@ if($rows == 0) {
 	    echo "<div class='container marketing'>
 	            <div class='container theme-showcase' role='main'>
 	                <h2>Consulta do(a) senhor(a) " . $paciente . " foi marcada com sucesso!!</h2><br>
-	                <a href='paciente.php?id='" . $idPaciente . "' class='btn btn-warning voltar'>Voltar</a>
+	                <a href='paciente.php?id=" . $idPaciente . "' class='btn btn-warning voltar'>Voltar</a>
 	            </div>
 	          </div>
 	    ";
