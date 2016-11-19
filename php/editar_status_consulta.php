@@ -150,7 +150,7 @@ if(isLogged()) {
 									<select class="form-control" name="medico" id="medico">
 										<option value="<?= $consultas['agd_medico'] ?>"><?= $consultas['agd_medico'] ?></option>
 										<option value="Ana Paula">Ana Paula</option>
-										<option value="Mateus Nóbrega">Mateus Nóbrega</option>
+										<option value="Mateus Nóbrega">Mateus Nobrega</option>
 										<option value="Bertonni Paz">Bertonni Paz</option>
 									</select>
 								</td>
@@ -240,24 +240,25 @@ if(isset($_POST['salvar'])) {
 	$dia = $date[0];
 	$mes = $date[1];
 	$ano = $date[2];
-	$date = $ano . "-" . $mes . "-" . $dia;
+	$data = $ano . "-" . $mes . "-" . $dia;
 	$especialidade = $_POST['especialidade'];
 	$id_consulta = $_POST['id_consulta'];
 	$id_paciente = $_POST['id_paciente'];
 
-	// Consulta para saber se já existe um agendamento para a data/hora pretendida
-	$sql = "SELECT * FROM agendamentos WHERE agd_data = '$date' AND agd_hora = '$hora' AND agd_pac_id = '$id_paciente' AND agd_medico = '$medico' AND agd_especialidade = '$especialidade' AND agd_status = '$status'";
+	// Consulta para saber se já existe um agendamento para o paciente que está alterando a consulta com a data/hora pretendida
+	$sql = "SELECT * FROM `agendamentos` WHERE `agd_data` = '$data' AND `agd_hora` = '$hora' AND `agd_pac_id` = '$id_paciente' AND `agd_medico` = '$medico' AND `agd_especialidade` = '$especialidade' AND `agd_status` = '$status'";
 	$result = mysqli_query($connection, $sql);
 	$rows1 = mysqli_num_rows($result);
 
-	$sql = "SELECT * FROM agendamentos WHERE agd_data = '$date' AND agd_hora = '$hora' AND agd_medico = '$medico'";
-	$result = mysqli_query($connection, $sql);
-	$rows2 = mysqli_num_rows($result);
+	// Consulta para saber se já existe uma consulta marcada para a mesma hora/data/médico salva no banco para qualquer outro paciente
+	$sql = "SELECT * FROM `agendamentos` WHERE `agd_data` = '$data' AND `agd_hora` = '$hora' AND `agd_medico` = '$medico'";
+	$results = mysqli_query($connection, $sql);
+	$rows2 = mysqli_num_rows($results);
 
-	if($rows1 == 0 && $row2 == 0) {
+	if($rows1 == 0 && $rows2 == 0) {
 		unset($_SESSION['erroConsulta']);
 	// Query para alterar o status da consulta desejada
-		$sql = "UPDATE `agendamentos` SET `agd_data`='$date', `agd_hora`='$hora', `agd_status`='$status', `agd_medico`='$medico', `agd_especialidade`='$especialidade' WHERE agd_id='$id_consulta'";
+		$sql = "UPDATE `agendamentos` SET `agd_data` = '$data', `agd_hora` = '$hora', `agd_status` = '$status', `agd_medico` = '$medico', `agd_especialidade` = '$especialidade' WHERE `agendamentos`.`agd_id` = '$id_consulta'";
 	// Se alterado com sucesso, redireciona para a página do paciente
 		if(mysqli_query($connection, $sql)) {
 			header("location: paciente.php?id=" . $id_paciente);

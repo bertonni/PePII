@@ -30,12 +30,12 @@ $sql = "SELECT * FROM agendamentos WHERE agd_data = '$data' AND agd_hora = '$hor
 $result = mysqli_query($connection, $sql);
 $rows1 = mysqli_num_rows($result);
 
-$sql = "SELECT * FROM agendamentos WHERE agd_data = '$data' AND agd_hora = '$hora' AND agd_medico = '$medico'";
+$sql = "SELECT * FROM agendamentos WHERE agd_data = '$data' AND agd_hora = '$hora' AND agd_medico = '$medico' AND agd_pac_id <> '$id_paciente'";
 $result = mysqli_query($connection, $sql);
 $rows2 = mysqli_num_rows($result);
 
 // Se não existir agendamento para essa data/hora, agenda a consulta normalmente.
-if($rows1 == 0 && $row2 == 0) {
+if($rows1 == 0 && $rows2 == 0) {
 	$sql = "INSERT INTO `agendamentos` (`agd_fun_id`, `agd_pac_id`, `agd_data`, `agd_hora`, `agd_status`, `agd_medico`, `agd_especialidade`) VALUES ('$idFuncionario', '$idPaciente', '$data', '$hora', '$status', '$medico', '$especialidade')";
 
 	if(mysqli_query($connection, $sql)) {
