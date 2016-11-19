@@ -77,6 +77,7 @@ function logout() {
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
         <li class="list_item"><a href="home.php">Página Inicial</a></li>
+        <li class="list_item"><a href="consultas_do_dia.php">Consultas de Hoje</a></li>
         <?php
         if(isLogged() && isAdmin()) {
         ?>
