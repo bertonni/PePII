@@ -36,7 +36,7 @@ if(isLogged()) {
                     <select class="form-control" name="medico" id="medico">
                         <option value="default">Escolher médico</option>
 						<option value="Ana Paula">Ana Paula</option>
-						<option value="Mateus Nóbrega">Mateus Nóbrega</option>
+						<option value="Mateus Nóbrega">Mateus Nobrega</option>
 						<option value="Bertonni Paz">Bertonni Paz</option>
 					</select>
 
