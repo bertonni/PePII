@@ -58,11 +58,6 @@ function logout() {
     <link href="../css/meuEstilo.css" rel="stylesheet">
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
     <link href="../css/ie10-viewport-bug-workaround.css" rel="stylesheet">
-    <style>
-    	.logo {
-    		padding-top: 0;
-    	}
-    </style>
 </head>
 <body>
 	<nav class="navbar navbar-default">
@@ -81,8 +76,7 @@ function logout() {
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
-       <!-- <li class="list_item"><a href="home.php">Página Inicial</a></li>-->
-        <!-- <li><a href="#">Link</a></li> -->
+        <li class="list_item"><a href="home.php">Página Inicial</a></li>
         <?php
         if(isLogged() && isAdmin()) {
         ?>
