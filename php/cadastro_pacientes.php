@@ -33,13 +33,11 @@ if(isLogged()) {
 	<div class="container theme-showcase" role="main">
 		<div id="cadastro_pac" class="page-header">
 			<h1>Cadastro de Pacientes</h1>
+            <button class="btn btn-warning voltar" onClick="history.go(-1)">Voltar</button>
 			<p>Os campos com <font color="#ce1414"> * </font>são obrigatórios</p>
 		</div>
 		<div class="row">
 			<form method="POST" name="form_pac" action="validar_pac.php">
-				<div class="col-md-12">
-	                <button class="btn btn-warning voltar" onClick="history.go(-1)">Voltar</button>
-				</div>
 				<div class="col-md-6">
 					<label for="nome">Nome *</label>
 					<input type="text" class="form-control maiuscula" id="nome" name="nome" required placeholder="Digite o nome">
