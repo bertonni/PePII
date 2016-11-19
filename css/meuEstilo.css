@@ -37,13 +37,12 @@
     text-decoration: none;
 }
 .add_user {
-    float: left;
-    margin-left: 22%;
-    margin-top: 9%;
+    margin-left: 17%;
+    margin-top: 7%;
 }
 .search_user {
-    margin-left: 52%;
-    margin-top: 10.93%;
+    margin-left: 3%;
+    margin-top: 7%;
 }
 h3 {
     margin-left: 6%;
@@ -69,4 +68,7 @@ h3 {
     color: white;
     padding: 2px 5px;
     float: right;
+}
+.logo {
+    padding-top: 0;
 }
