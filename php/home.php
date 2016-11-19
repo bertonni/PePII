@@ -6,16 +6,16 @@ require_once 'cabecalho.php';
 <div class="container">
 	<div class="container theme-showcase" role="main">
 		<div class="row">
-            <div class="add_user">
+            <div class="col-md-4 add_user">
                 <h3>Cadastrar Paciente</h3><br>
                 <a href="cadastro_pacientes.php" class="ancor" title="Cadastrar Paciente">
-                    <img src="../imagens/adcusuario.png" alt="Adicionar Usuário">
+                    <img src="../imagens/adcusuario.png" class="img-responsive" alt="Adicionar Usuário">
                 </a>
             </div>
-            <div class="search_user">
+            <div class="col-md-4 search_user">
                 <h3>Procurar Paciente</h3><br>
-                <a href="busca.php" class="ancor" title="Buscar Paciente">
-                    <img src="../imagens/busca.png" alt="Adicionar Usuário">
+                <a href="busca.php" class="ancor" title="Procurar Paciente">
+                    <img src="../imagens/busca.png" class="img-responsive" alt="Adicionar Usuário">
                 </a>
             </div>
 		</div>
