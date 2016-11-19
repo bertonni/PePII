@@ -25,7 +25,7 @@ connectDataBase();
 			?>
 			<form class="navbar-form navbar-left" action="busca.php" method="POST">
 			<div class="form-group">
-			<input type="text" class="form-control" name="texto" placeholder="Digite o nome ou cpf do paciente que deseja encontrar" size="45">
+			<input type="text" class="form-control" name="texto" placeholder="Digite o nome do paciente que deseja encontrar" size="45">
 				</div>
 				<button type="submit" class="btn btn-default">Procurar</button>
                <a href="home.php" class="btn btn-warning voltar">Voltar</a>
