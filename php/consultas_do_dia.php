@@ -20,6 +20,7 @@ if(isLogged()) {
             if($rows != 0) {
                 ?>
                 <div id="cadastro_pac" class="page-header">
+                    <button class="btn btn-warning voltar" onClick="history.go(-1)">Voltar</button>
                     <h1>Consultas marcadas para hoje</h1>
                 </div>
                 <div class="row">
@@ -70,7 +71,7 @@ if(isLogged()) {
         <div class="container marketing">
             <div class="container theme-showcase" role="main">
                 <div id="cadastro" class="page-header">
-                    <h2>Por favor, faça o login para cadastrar um Paciente</h2>
+                    <h2>Por favor, faça o login para verificar as consultas de hoje</h2>
                 </div>
             </div>
         </div>
