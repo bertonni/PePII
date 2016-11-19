@@ -38,7 +38,7 @@ if(isLogged()) {
 			</div>
 			<div class="row">
 				<a href="busca.php" class="btn btn-warning voltar">Voltar</a>
-				<a href="editar_dados.php?id=<?= $id ?>" class="btn btn-primary marcar">Editar Dados</a>
+				<a href="editar_dados.php?id=<?= $id ?>" class="btn btn-primary editar">Editar Dados</a>
 			</br></br>
 			<!-- Passando o id do paciente pelo método GET para as páginas de edição de dados e marcação de consultas -->
 			<table class='table table-striped table-bordered'>
@@ -158,23 +158,27 @@ if(isLogged()) {
 									<select class="form-control" name="especialidade" id="especialidade">
 									<!-- Deixa a opção que está salva no banco de dados selecionada por padrão -->
 										<?php
-										if($especialidade == "Prótese Dental") {
+										if($especialidade == "Endodontia") {
 											?>
-											<option value="Prótese Dental" selected>Prótese Dental</option>
+											<option value="Endodontia" selected>Endodontia</option>
 											<?php } else { ?>
-											<option value="Prótese Dental">Prótese Dental</option>
+											<option value="Endodontia">Endodontia</option>
 											<?php } if($especialidade == "Odontopediatria") { ?>
 											<option value="Odontopediatria" selected>Odontopediatria</option>
 											<?php } else { ?>
 											<option value="Odontopediatria">Odontopediatria</option>
-											<?php } if($especialidade == "Endodontia") { ?>
-											<option value="Endodontia" selected>Endodontia</option>
-											<?php } else { ?>
-											<option value="Endodontia">Endodontia</option>
 											<?php } if($especialidade == "Ortodontia") { ?>
 											<option value="Ortodontia" selected>Ortodontia</option>
 											<?php } else { ?>
 											<option value="Ortodontia">Ortodontia</option>
+											<?php } if($especialidade == "Periodontia") { ?>
+											<option value="Periodontia" selected>Periodontia</option>
+											<?php } else { ?>
+											<option value="Periodontia">Periodontia</option>
+											<?php } if($especialidade == "Prótese Dentária") { ?>
+											<option value="Prótese Dentária" selected>Prótese Dentária</option>
+											<?php } else { ?>
+											<option value="Prótese Dentária">Prótese Dentária</option>
 											<?php } ?>
 										</select>
 									</td>
@@ -242,7 +246,7 @@ if(isset($_POST['salvar'])) {
 	$id_paciente = $_POST['id_paciente'];
 
 	// Consulta para saber se já existe um agendamento para a data/hora pretendida
-	$sql = "SELECT * FROM agendamentos WHERE agd_data = '$date' AND agd_hora = '$hora' AND agd_pac_id = '$id_paciente'";
+	$sql = "SELECT * FROM agendamentos WHERE agd_data = '$date' AND agd_hora = '$hora' AND agd_pac_id = '$id_paciente' AND agd_medico = '$medico' AND agd_especialidade = '$especialidade' AND agd_status = '$status'";
 	$result = mysqli_query($connection, $sql);
 	$rows1 = mysqli_num_rows($result);
 
