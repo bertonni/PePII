@@ -26,12 +26,16 @@ $arr = mysqli_fetch_array($result);
 $paciente = $arr['pac_nome'];
 
 // Consulta para saber se já existe um agendamento para a data/hora pretendida
+$sql = "SELECT * FROM agendamentos WHERE agd_data = '$data' AND agd_hora = '$hora' AND agd_pac_id = '$idPaciente'";
+$result = mysqli_query($connection, $sql);
+$rows1 = mysqli_num_rows($result);
+
 $sql = "SELECT * FROM agendamentos WHERE agd_data = '$data' AND agd_hora = '$hora' AND agd_medico = '$medico'";
 $result = mysqli_query($connection, $sql);
-$rows = mysqli_num_rows($result);
+$rows2 = mysqli_num_rows($result);
 
 // Se não existir agendamento para essa data/hora, agenda a consulta normalmente.
-if($rows == 0) {
+if($rows1 == 0 && $row2 == 0) {
 	$sql = "INSERT INTO `agendamentos` (`agd_fun_id`, `agd_pac_id`, `agd_data`, `agd_hora`, `agd_status`, `agd_medico`, `agd_especialidade`) VALUES ('$idFuncionario', '$idPaciente', '$data', '$hora', '$status', '$medico', '$especialidade')";
 
 	if(mysqli_query($connection, $sql)) {
