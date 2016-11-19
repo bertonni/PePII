@@ -22,10 +22,11 @@ if(isLogged()) {
 
                     <select class="form-control" name="especialidade" id="especialidade">
                         <option value="default">Escolher especialidade</option>
-						<option value="Prótese Dental">Prótese Dental</option>
-						<option value="Odontopediatria">Odontopediatria</option>
-						<option value="Endodontia">Endodontia</option>
-						<option value="Ortodontia">Ortodontia</option>
+                        <option value="Endodontia">Endodontia</option>
+                        <option value="Odontopediatria">Odontopediatria</option>
+                        <option value="Ortodontia">Ortodontia</option>
+                        <option value="Periodontia">Periodontia</option>
+                        <option value="Prótese Dental">Prótese Dental</option>
 
 					</select>
 	           </div>
