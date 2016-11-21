@@ -30,7 +30,7 @@ $sql = "SELECT * FROM agendamentos WHERE agd_data = '$data' AND agd_hora = '$hor
 $result = mysqli_query($connection, $sql);
 $rows1 = mysqli_num_rows($result);
 
-$sql = "SELECT * FROM agendamentos WHERE agd_data = '$data' AND agd_hora = '$hora' AND agd_medico = '$medico' AND agd_pac_id <> '$id_paciente'";
+$sql = "SELECT * FROM agendamentos WHERE agd_data = '$data' AND agd_hora = '$hora' AND agd_medico = '$medico' AND agd_pac_id <> '$idPaciente'";
 $result = mysqli_query($connection, $sql);
 $rows2 = mysqli_num_rows($result);
 

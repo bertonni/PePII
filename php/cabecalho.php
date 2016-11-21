@@ -112,7 +112,7 @@ function logout() {
           <?php
           // mensagem de boas-vindas ao usuário logado
           $hr = date(" H ");
-          $hr = $hr-1;
+          $hr = $hr-4;
 
           if($hr >= 12 && $hr < 18) {
             $resp = "Boa tarde";
