@@ -41,7 +41,7 @@ if($rows1 == 0 && $rows2 == 0) {
 	if(mysqli_query($connection, $sql)) {
 	    echo "<div class='container marketing'>
 	            <div class='container theme-showcase' role='main'>
-	                <h2>Consulta do(a) senhor(a) " . $paciente . " foi marcada com sucesso!!</h2><br>
+	                <h2>A consulta do(a) senhor(a) " . $paciente . " foi marcada com sucesso!!</h2><br>
 	                <a href='paciente.php?id=" . $idPaciente . "' class='btn btn-warning voltar'>Voltar</a>
 	            </div>
 	          </div>
