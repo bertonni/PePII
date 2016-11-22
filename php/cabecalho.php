@@ -111,17 +111,7 @@ function logout() {
         <li><a href="#">
           <?php
           // mensagem de boas-vindas ao usuário logado
-          $hr = date(" H ");
-          $hr = $hr-4;
-
-          if($hr >= 12 && $hr < 18) {
-            $resp = "Boa tarde";
-          } else if ($hr >= 0 && $hr < 12){
-            $resp = "Bom dia";
-          } else {
-            $resp = "Boa noite";
-          }
-          echo $resp . ", <b>" . $_SESSION['usuario'] . "</b>!!";
+          echo "Bem vindo(a), <b>" . $_SESSION['usuario'] . "</b>!!";
           ?>
           </a>
           </li>
