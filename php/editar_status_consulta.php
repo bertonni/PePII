@@ -118,7 +118,7 @@ if(isLogged()) {
 						<form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="POST">
 							<td class='td_one'>
 								<?php
-								echo "<input type='text' class='form-control' id='data' name='data_consulta' value='" . date_format(new DateTime($consultas['agd_data']), 'd/m/Y') . "'>";
+								echo "<input type='date' class='form-control' id='data' min='" . date("Y-m-d") . "' name='data_consulta' value='" . $consultas['agd_data'] . "'>";
 								?>
 								<td>
 									<select class="form-control" name="hora_consulta" id="hora_consulta">
@@ -211,7 +211,7 @@ if(isLogged()) {
 					</table>
 					<div class='col-md-12'>
 						<button type="submit" class="btn btn-primary" name="salvar" title="Salvar">Salvar</button>
-						<button type="submit" class="btn btn-danger" name="cancelar" title="Cancelar">Cancelar</button>
+						<a href="paciente.php?id=<?= $id ?>" class="btn btn-danger" title="Cancelar">Cancelar</a>
 					</div>
 				</form>
 			</div>
@@ -236,11 +236,6 @@ if(isset($_POST['salvar'])) {
 	$medico = $_POST['medico'];
 	$data = $_POST['data_consulta'];
 	$hora = $_POST['hora_consulta'];
-	$date = explode("/", $data);
-	$dia = $date[0];
-	$mes = $date[1];
-	$ano = $date[2];
-	$data = $ano . "-" . $mes . "-" . $dia;
 	$especialidade = $_POST['especialidade'];
 	$id_consulta = $_POST['id_consulta'];
 	$id_paciente = $_POST['id_paciente'];

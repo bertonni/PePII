@@ -43,7 +43,7 @@ if(isLogged()) {
 				</div>
 				<div class="col-md-3">
 					<label for="data_consulta">Data *</label>
-  					<input type="date" class="form-control" id="data_consulta" name="data_consulta" required>
+  					<input type="date" class="form-control" id="data_consulta" min="<?= date("Y-m-d") ?>" name="data_consulta" required>
 				</div>
 				<div class="col-md-2">
 					<label for="hora_consulta">Hora *</label>
