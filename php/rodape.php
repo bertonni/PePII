@@ -9,6 +9,20 @@
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
     <!-- <script src="../js/jquery-1.12.0.min.js"></script> -->
+    <script type="text/javascript">
+      document.getElementById('tutorial-cadastro').onclick = function() {
+        introJs().setOption('doneLabel', 'Next page').start().oncomplete(function() {
+          window.location.href = 'home.php?multipage=true';
+        })/*.oncomplete(function() {
+          window.location.href = 'cadastro_pacientes.php?multipage=true';
+        })*/;
+      };
+      document.getElementById('tutorial-busca').onclick = function() {
+        introJs().setOption('doneLabel', 'Next page').start().oncomplete(function() {
+          window.location.href = 'busca.php?multipage=true';
+        });
+      };
+    </script>
     <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
     <script src="../js/bootstrap.min.js"></script>
     <!-- <script src="../js/jquery.maskedinput.js"></script> -->
