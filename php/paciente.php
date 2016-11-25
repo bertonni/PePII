@@ -25,8 +25,9 @@ if(isLogged()) {
 			</div>
 			<div class="row">
 				<a href="busca.php" class="btn btn-warning voltar">Voltar</a>
-				<a href="consulta.php?id=<?=$id?>" class="btn btn-success marcar">Marcar Consulta</a>
-				<a href="editar_dados.php?id=<?=$id?>" class="btn btn-primary editar">Editar Dados</a>
+				<a href="consulta.php?id=<?=$id?>" class="btn btn-success marcar" data-step="1" data-intro="Clique aqui para marcar uma consulta para o paciente" data-position='top'>Marcar Consulta</a>
+				<a href="editar_dados.php?id=<?=$id?>" class="btn btn-primary editar voltar" data-step="2" data-intro="Clique aqui para editar os dados pessoais do paciente" data-position='left'>Editar Dados</a>
+				<a class="btn btn-info editar" href="javascript:void(0);" onclick="javascript:introJs().setOption('showProgress', true).start();">Tutorial</a>
 			</br></br>
 			<!-- Passando o id do paciente pelo método GET para as páginas de edição de dados e marcação de consultas -->
 			<table class='table table-striped table-bordered'>
@@ -107,7 +108,7 @@ if(isLogged()) {
 					<td><?= $especialidade ?></td>
 					<td>
 						<?= $consultas['agd_status'] ?>
-						<a class='btn btn-primary alterar marcar' href='editar_status_consulta.php?id=<?=$id?>&consulta=<?=$id_consulta?>'>Alterar</a>
+						<a class='btn btn-primary alterar marcar' href='editar_status_consulta.php?id=<?=$id?>&consulta=<?=$id_consulta?>' data-step="3" data-intro="Clique aqui para alterar dia/hora da consulta ou médico marcado" data-position='left'>Alterar</a>
 					</td>
 				</tr>
 				<?php

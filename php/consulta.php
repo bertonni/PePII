@@ -16,11 +16,12 @@ if(isLogged()) {
 			<form method="POST" action="validar_consulta.php">
 			<div class="col-md-12">
                 <button class="btn btn-warning voltar" onClick="history.go(-1)">Voltar</button>
+                <a class="btn btn-info editar" href="javascript:void(0);" onclick="javascript:introJs().setOption('showProgress', true).start();">Tutorial</a>
 			</div>
                 <div class="col-md-4">
                     <label for="">Especialidade *</label>
 
-                    <select class="form-control" name="especialidade" id="especialidade">
+                    <select class="form-control" name="especialidade" id="especialidade" data-step="1" data-intro="Clique aqui para escolher uma especialidade" data-position='top'>
                         <option value="default">Escolher especialidade</option>
                         <option value="Endodontia">Endodontia</option>
                         <option value="Odontopediatria">Odontopediatria</option>
@@ -33,7 +34,7 @@ if(isLogged()) {
                     <div class="col-md-3">
                     <label for="">Médico *</label>
 
-                    <select class="form-control" name="medico" id="medico">
+                    <select class="form-control" name="medico" id="medico" data-step="2" data-intro="Clique aqui para escolher o médico" data-position='top'>
                         <option value="default">Escolher médico</option>
 						<option value="Ana Paula">Ana Paula</option>
 						<option value="Mateus Nóbrega">Mateus Nobrega</option>
@@ -43,12 +44,12 @@ if(isLogged()) {
 				</div>
 				<div class="col-md-3">
 					<label for="data_consulta">Data *</label>
-  					<input type="date" class="form-control" id="data_consulta" min="<?= date("Y-m-d") ?>" name="data_consulta" required>
+  					<input type="date" class="form-control" id="data_consulta" min="<?= date("Y-m-d") ?>" name="data_consulta" required data-step="3" data-intro="Digite a data desejada para a consulta" data-position='top'>
 				</div>
 				<div class="col-md-2">
 					<label for="hora_consulta">Hora *</label>
 					<br>
-					<select class="form-control" name="hora_consulta" id="hora_consulta">
+					<select class="form-control" name="hora_consulta" id="hora_consulta" data-step="4" data-intro="Clique aqui para escolher a hora da consulta" data-position='top'>
 						<option value="08:00">08:00</option>
 						<option value="08:30">08:30</option>
 						<option value="09:00">09:00</option>
@@ -75,8 +76,8 @@ if(isLogged()) {
   					<input type="hidden" class="form-control" name="id" value="<?= $idPaciente ?>">
 				</div>
 				<div class="col-md-12">
-					<button type="submit" class="btn btn-primary" title="Enviar">Enviar</button>
-					<button type="reset" class="btn btn-default" title="Limpar">Limpar</button>
+					<button type="submit" class="btn btn-primary" title="Enviar" data-step="5" data-intro="Depois de preencher os campos, clique aqui para marcar a consulta" data-position='top'>Enviar</button>
+					<button type="reset" class="btn btn-default" title="Limpar" data-step="6" data-intro="Clique aqui para limpar o formulário (Todos os campos serão limpos)" data-position='top'>Limpar</button>
 				</div>
                 </div>
 
