@@ -14,11 +14,12 @@ if(isLogged()) {
 			</div>
 			<form class="navbar-form navbar-left" action="busca.php" method="POST">
 				<div class="form-group">
-					<input type="text" class="form-control" name="texto" placeholder="Digite o nome do paciente que deseja encontrar" size="45">
+					<input type="text" class="form-control" name="texto" placeholder="Digite o nome do paciente que deseja encontrar" size="45" data-step="1" data-intro="Digite aqui o nome ou um trecho do nome do paciente que deseja encontrar (Se não digitar nada, o sistema exibirá todos os pacientes cadastrados)" data-position='bottom'>
 				</div>
-				<button type="submit" class="btn btn-default">Procurar</button>
+				<button type="submit" class="btn btn-default" data-step="2" data-intro="Depois de digitar o nome do paciente, clique aqui para exibir os resultados da busca" data-position='bottom'>Procurar</button>
 			</form>
 			<a href="home.php" class="btn btn-warning voltar">Voltar</a>
+			<a class="btn btn-info editar" href="javascript:void(0);" onclick="javascript:introJs().setOption('showProgress', true).start();">Tutorial</a>
 			<?php
 		// Se não está logado, precisa fazer o login
 		} else {
@@ -81,7 +82,7 @@ if($result && isset($_POST['texto'])) {
 							$id = $array['pac_id'];
 							echo "
 							<tr>
-								<td><a href='paciente.php?id=" . $id . "'>" . $array['pac_nome'] . "</a></td>
+								<td><a href='paciente.php?id=" . $id . "' data-step='3' data-intro='Clique aqui para exibir os dados do paciente' data-position='top'>" . $array['pac_nome'] . "</a></td>
 								<td>" . $array['pac_telefone_1'] . "</td>
 								<td>" . $array['pac_email'] . "</td>
 							</tr>
