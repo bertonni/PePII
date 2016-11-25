@@ -52,10 +52,12 @@ function logout() {
     <meta name="author" content="">
     <script src="../js/jquery-1.12.0.min.js"></script>
     <script src="../js/jquery.maskedinput.js"></script>
+    <script type="text/javascript" src="../js/intro.js"></script>
     <!-- Bootstrap core CSS -->
     <link href="../css/bootstrap.min.css" rel="stylesheet">
     <link href="../css/signin.css" rel="stylesheet">
     <link href="../css/meuEstilo.css" rel="stylesheet">
+    <link href="../css/introjs.css" rel="stylesheet">
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
     <link href="../css/ie10-viewport-bug-workaround.css" rel="stylesheet">
 </head>
