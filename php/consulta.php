@@ -10,14 +10,12 @@ if(isLogged()) {
 <div class="container marketing">
 	<div class="container theme-showcase" role="main">
 		<div id="cadastro" class="page-header">
-			<h1>Marcação de Consulta</h1>
-		</div>
-		<div class="row">
-			<form method="POST" action="validar_consulta.php">
-			<div class="col-md-12">
                 <button class="btn btn-warning voltar" onClick="history.go(-1)">Voltar</button>
                 <a class="btn btn-info editar" href="javascript:void(0);" onclick="javascript:introJs().setOption('showProgress', true).start();">Tutorial</a>
-			</div>
+            <h1>Marcação de Consulta</h1>
+        </div>
+        <div class="row">
+            <form method="POST" action="validar_consulta.php">
                 <div class="col-md-4">
                     <label for="">Especialidade *</label>
 
