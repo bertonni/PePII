@@ -49,10 +49,9 @@ function logout() {
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- As 3 meta tags acima *precisam* vir primeiro no head; qualquer outro conteúdo head vem *depois* destas tags -->
     <meta name="description" content="">
-    <meta name="author" content="">
+    <meta name="author" content="IFPE">
     <script src="../js/jquery-1.12.0.min.js"></script>
     <script src="../js/jquery.maskedinput.js"></script>
-    <script type="text/javascript" src="../js/intro.js"></script>
     <!-- Bootstrap core CSS -->
     <link href="../css/bootstrap.min.css" rel="stylesheet">
     <link href="../css/signin.css" rel="stylesheet">
