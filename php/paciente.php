@@ -108,7 +108,7 @@ if(isLogged()) {
 					<td><?= $especialidade ?></td>
 					<td>
 						<?= $consultas['agd_status'] ?>
-						<a class='btn btn-primary alterar marcar' href='editar_status_consulta.php?id=<?=$id?>&consulta=<?=$id_consulta?>' data-step="3" data-intro="Clique aqui para alterar dia/hora da consulta ou médico marcado" data-position='left'>Alterar</a>
+						<a class='btn btn-primary alterar marcar' href='editar_status_consulta.php?id=<?=$id?>&consulta=<?=$id_consulta?>' data-step="3" data-intro="Clique aqui para alterar dia, hora, médico ou situação da consulta marcada" data-position='left'>Alterar</a>
 					</td>
 				</tr>
 				<?php
