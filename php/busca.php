@@ -82,7 +82,7 @@ if($result && isset($_POST['texto'])) {
 							$id = $array['pac_id'];
 							echo "
 							<tr>
-								<td><a href='paciente.php?id=" . $id . "' data-step='3' data-intro='Clique aqui para exibir os dados do paciente' data-position='top'>" . $array['pac_nome'] . "</a></td>
+								<td><a href='paciente.php?id=" . $id . "' data-step='3' data-intro='Clique no nome do paciente para exibir seus dados' data-position='top'>" . $array['pac_nome'] . "</a></td>
 								<td>" . $array['pac_telefone_1'] . "</td>
 								<td>" . $array['pac_email'] . "</td>
 							</tr>
