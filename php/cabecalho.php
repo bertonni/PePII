@@ -52,6 +52,7 @@ function logout() {
     <meta name="author" content="IFPE">
     <script src="../js/jquery-1.12.0.min.js"></script>
     <script src="../js/jquery.maskedinput.js"></script>
+    <script src="../js/bootbox.min.js"></script>
     <!-- Bootstrap core CSS -->
     <link href="../css/bootstrap.min.css" rel="stylesheet">
     <link href="../css/signin.css" rel="stylesheet">
