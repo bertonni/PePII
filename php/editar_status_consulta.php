@@ -8,8 +8,11 @@ connectDataBase();
 if(isset($_SESSION['erroConsulta']) && $_SESSION['erroConsulta']) {
 ?>
 <script>
-	alert("Já existe uma consulta marcada para esse horário. Por favor, agende para outro dia/horário!");
-	$('#data').focus();
+	$(function alerta() {
+		bootbox.alert("Já existe uma consulta marcada para esse horário. Por favor, agende para outro dia/horário!");
+		$('#data').focus();
+	});
+	alerta();
 </script>
 <?php
 }
@@ -149,7 +152,7 @@ if(isLogged()) {
 								<td>
 									<select class="form-control" name="medico" id="medico">
 										<option value="<?= $consultas['agd_medico'] ?>"><?= $consultas['agd_medico'] ?></option>
-										<option value="Ana Paula">Ana Paula</option>
+										<option value="Ana Beatriz">Ana Beatriz</option>
 										<option value="Mateus Nóbrega">Mateus Nobrega</option>
 										<option value="Bertonni Paz">Bertonni Paz</option>
 									</select>
@@ -211,7 +214,8 @@ if(isLogged()) {
 					</table>
 					<div class='col-md-12'>
 						<button type="submit" class="btn btn-primary" name="salvar" title="Salvar">Salvar</button>
-						<a href="paciente.php?id=<?= $id ?>" class="btn btn-danger" title="Cancelar">Cancelar</a>
+						<button type="submit" class="btn btn-danger" name="cancelar" title="Cancelar">Cancelar</button>
+						<!-- <a href="paciente.php?id=<?= $id ?>" class="btn btn-danger" title="Cancelar">Cancelar</a> -->
 					</div>
 				</form>
 			</div>
@@ -241,7 +245,7 @@ if(isset($_POST['salvar'])) {
 	$id_paciente = $_POST['id_paciente'];
 
 	// Consulta para saber se já existe um agendamento para o paciente que está alterando a consulta com a data/hora pretendida
-	$sql = "SELECT * FROM `agendamentos` WHERE `agd_data` = '$data' AND `agd_hora` = '$hora' AND `agd_pac_id` = '$id_paciente' AND `agd_medico` = '$medico' AND `agd_especialidade` = '$especialidade' AND `agd_status` = '$status'";
+	$sql = "SELECT * FROM `agendamentos` WHERE `agd_data` = '$data' AND `agd_hora` = '$hora' AND `agd_pac_id` = '$id_paciente' AND `agd_medico` = '$medico' OR `agd_especialidade` = '$especialidade' OR `agd_status` = '$status'";
 	$result = mysqli_query($connection, $sql);
 	$rows1 = mysqli_num_rows($result);
 

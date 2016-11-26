@@ -47,7 +47,7 @@ if(isLogged() && isAdmin()) {
 <script type="text/javascript">
 $('form').on('submit', function () {
     if($(this).find('input[name="senha"]').val() != $(this).find('input[name="confirma_senha"]').val()) {
-        alert("Senhas digitadas não conferem!!");
+        bootbox.alert("Senhas digitadas não conferem!!");
         $('#senha').focus();
         return false;
     }
