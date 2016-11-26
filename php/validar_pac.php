@@ -36,14 +36,14 @@ if(isset($_POST['fone2']) && $_POST['fone2'] != ""){
 // Query para saber se já existe um usuário cadastrado com alguns dos dados passados no cadastro (para evitar duplicidade de usuários)
 $sql = "SELECT * FROM `pacientes`";
 $result = mysqli_query($connection, $sql);
-$contain = false;
+$contains = false;
 while($array = mysqli_fetch_assoc($result)) {
 	if($array['pac_cpf'] == $cpf && $cpf != "Não Cadastrado" || $array['pac_rg'] == $rg && $rg != "Não Cadastrado") {
-		$contain = true;
+		$contains = true;
 		break;
 	}
 }
-if($contain) {
+if($contains) {
 	echo "<div class='container marketing'>
 			<div class='container theme-showcase' role='main'>
 				<h2>Já existe um paciente cadastrado com o CPF ou RG informados!!</h2><br>
@@ -61,7 +61,7 @@ if($contain) {
 		echo "<div class='container marketing'>
 				<div class='container theme-showcase' role='main'>
 					<h2>Paciente cadastrado com sucesso!!</h2><br>
-					<a href='cadastro_pacientes.php' class='btn btn-warning voltar'>Voltar</a>
+					<a href='cadastro_pacientes.php' class='btn btn-warning voltar'>Cadastrar outro Paciente</a>
 					<a href='home.php' class='btn btn-primary voltar'>Ir à Página Inicial</a>
 				</div>
 			</div>
