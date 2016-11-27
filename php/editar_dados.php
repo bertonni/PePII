@@ -14,6 +14,28 @@ $array = mysqli_fetch_array($result);
 
 if(isLogged()) {
 	?>
+<script type="text/javascript">
+
+jQuery(function($) {
+	$.mask.definitions['~']='[+-]';
+	//Inicio Mascara Telefone
+	$('input[name=fone1]').focusout(function(){
+		var phone, element;
+		element = $(this);
+		element.unmask();
+		phone = element.val().replace(/\D/g, '');
+		if(phone.length > 10) {
+			element.mask("(99) 99999-999?9");
+		} else {
+			element.mask("(99) 9999-9999?9");
+		}
+	}).trigger('focusout');
+
+	$("#cpf").mask("999.999.999-99");
+	// $("#rg").mask("99.999.99?9");
+});
+document.form_pac.reset();
+</script>
 	<title>Dados do Paciente</title>
 	<div class="container marketing">
 		<div class="container theme-showcase" role="main">
@@ -35,7 +57,7 @@ if(isLogged()) {
 					</tr>
 					<tr>
 						<td class='td_one'><b>CPF</b></td>
-						<td><input type="text" class='form-control' name="cpf" value="<?= $array['pac_cpf'] ?>" size="20"></td>
+						<td><input type="text" id="cpf" class='form-control' name="cpf" value="<?= $array['pac_cpf'] ?>" size="20"></td>
 					</tr>
 					<tr>
 						<td class='td_one'><b>RG</b></td>
