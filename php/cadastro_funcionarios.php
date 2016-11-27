@@ -33,13 +33,28 @@ if(isLogged() && isAdmin()) {
 					<label for="senha">Senha *</label>
   					<input type="password" class="form-control" id="senha" name="senha" required placeholder="Digite sua senha" data-step="4" data-intro="Digite aqui uma senha alfanumérica (Apenas letras - maiúsculas ou minúsculas - e números)" data-position='top'>
 				</div>
-				<div class="col-md-4 user">
-					<label for="confirma_senha">Confirmar Senha *</label>
-  					<input type="password" class="form-control" id="confirma_senha" name="confirma_senha" required placeholder="Confirme sua senha" data-step="5" data-intro="Confirme a senha neste campo (Repita a senha digitada anteriormente)" data-position='top'>
+                <div class="col-md-4 user">
+                    <label for="confirma_senha">Confirmar Senha *</label>
+                    <input type="password" class="form-control" id="confirma_senha" name="confirma_senha" required placeholder="Confirme sua senha" data-step="5" data-intro="Confirme a senha neste campo (Repita a senha digitada anteriormente)" data-position='top'>
+                </div>
+                <div class="col-md-6 user">
+                    <label for="pergunta_secreta">Pergunta Secreta *</label>
+                    <select class="form-control" id="pergunta_secreta" name="pergunta_secreta" required placeholder="Escolha uma pergunta" data-step="6" data-intro="Escolha uma pergunta que será necessária para recuperar a senha, caso a esqueça" data-position='top'>
+                        <option value="default">Escolha uma pergunta</option>
+                        <option value="Qual foi o seu primeiro veículo?">Qual foi o seu primeiro veículo?</option>
+                        <option value="Qual o nome do seu primeiro animal de estimação?">Qual o nome do seu primeiro animal de estimação?</option>
+                        <option value="Qual sua comida preferida?">Qual sua comida preferida?</option>
+                        <option value="Qual o seu filme preferido?">Qual o seu filme preferido?</option>
+                        <option value="Pra qual time você torce?">Pra qual time você torce?</option>
+                    </select>
+                </div>
+				<div class="col-md-6 user">
+					<label for="resposta">Resposta *</label>
+  					<input type="password" class="form-control" id="resposta" name="resposta" required placeholder="Digite a resposta" data-step="7" data-intro="Digite aqui a resposta para a pergunta escolhida" data-position='top'>
 				</div>
 				<div class="col-md-12">
-					<button type="submit" class="btn btn-primary" title="Enviar" data-step="6" data-intro="Depois de preencher os campos, clique aqui para concluir o cadastro" data-position='top'>Enviar</button>
-					<button type="reset" class="btn btn-default" title="Limpar" data-step="7" data-intro="Clique aqui para limpar o formulário (Todos os campos serão limpos)" data-position='top'>Limpar</button>
+					<button type="submit" class="btn btn-primary" title="Enviar" data-step="8" data-intro="Depois de preencher os campos, clique aqui para concluir o cadastro" data-position='top'>Enviar</button>
+					<button type="reset" class="btn btn-default" title="Limpar" data-step="9" data-intro="Clique aqui para limpar o formulário (Todos os campos serão limpos)" data-position='top'>Limpar</button>
 				</div>
 			</form>
 		</div>
