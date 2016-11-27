@@ -39,9 +39,8 @@ if(isset($_POST['enviar'])) {
 <div class='container marketing'>
     <div class='container theme-showcase' role='main'>
         <div id='recuperar_senha' class='page-header'>
-            <a href="login.php" class="btn btn-warning voltar">Voltar</a>
             <a class="btn btn-info editar" href="javascript:void(0);" onclick="javascript:introJs().setOption('showProgress', true).start();">Tutorial</a>
-            <h1>Recuperar Senha</h1>
+            <h1>Recuperar Senha (Passo 2 de 3)</h1>
         </div>
         <form action="recuperar_senha_3.php" method="POST">
             <?php
