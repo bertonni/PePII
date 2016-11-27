@@ -76,3 +76,7 @@ h3 {
 .recovery {
     margin-left: 0px;
 }
+.alert-danger, .alert-success {
+    margin-top: 15px;
+    margin-left: 1%;
+}
