@@ -245,7 +245,7 @@ if(isset($_POST['salvar'])) {
 	$id_paciente = $_POST['id_paciente'];
 
 	// Consulta para saber se já existe um agendamento para o paciente que está alterando a consulta com a data/hora pretendida
-	$sql = "SELECT * FROM `agendamentos` WHERE `agd_data` = '$data' AND `agd_hora` = '$hora' AND `agd_pac_id` = '$id_paciente' AND `agd_medico` = '$medico' OR `agd_especialidade` = '$especialidade' OR `agd_status` = '$status'";
+	$sql = "SELECT * FROM `agendamentos` WHERE `agd_data` = '$data' AND `agd_hora` = '$hora' AND `agd_pac_id` = '$id_paciente'";
 	$result = mysqli_query($connection, $sql);
 	$rows1 = mysqli_num_rows($result);
 
