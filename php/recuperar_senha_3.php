@@ -61,15 +61,15 @@ if(isset($_POST['submeter'])) {
 </script>
 <?php
 if(isset($_POST['atualizar_senha'])) {
-    $senha = md5($_POST['senha']);
     $usuario = $_POST['username'];
+    $senha = preg_replace('/[^[:alnum:]_]/', '', $_POST['senha']);
+    $senha = md5($senha);
 
     $sql = "UPDATE `funcionarios` SET `fun_senha`='$senha' WHERE `funcionarios`.`fun_usuario`='$usuario'";
 
     // Se a query foi executada com sucesso, seta a variável de sessão 'senhaAtualizada' para exibir uma mensagem dizendo que a senha foi alterada com sucesso
     if(mysqli_query($connection, $sql)) {
         ?>
-                <br>
         <div class='container marketing'>
             <div class='container theme-showcase' role='main'>
                 <div class="col-md-6 alert alert-success">
