@@ -4,14 +4,16 @@ require_once 'cabecalho.php';
 connectDataBase();
 
 // Salva os dados preenchidos no formulário de cadastro de funcionários em variáveis para incluir no banco de dados
-$nome = $_POST['nome'];
+$nome = strtoupper($_POST['nome']);
 $nasc = $_POST['nasc'];
 $usuario = $_POST['usuario'];
 $senha = md5($_POST['senha']);
+$pergunta = $_POST['pergunta_secreta'];
+$resposta = md5($_POST['resposta']);
 $role = "funcionario";
 
 // Query para inserir os dados do funcionário no banco de dados
-$sql = "INSERT INTO `funcionarios` (`fun_nome`, `fun_data_nasc`, `fun_usuario`, `fun_senha`, `fun_role`) VALUES ('$nome', '$nasc', '$usuario', '$senha', '$role')";
+$sql = "INSERT INTO `funcionarios` (`fun_nome`, `fun_data_nasc`, `fun_usuario`, `fun_senha`, `fun_role`, `fun_secret_question`, `fun_secret_answer`) VALUES ('$nome', '$nasc', '$usuario', '$senha', '$role', '$pergunta', '$resposta')";
 
 // Se a inserção foi bem sucedida, exibe uma mensagem com um link para voltar à página de cadastro
 if(mysqli_query($connection, $sql)) {
