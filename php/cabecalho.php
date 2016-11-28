@@ -9,7 +9,7 @@ function connectDataBase() {
   global $connection;
   $servername = "localhost";
   $username ="root";
-  $password ="root";
+  $password ="";
   $dbname = "sistema_de_cadastro";
 
   $connection = mysqli_connect($servername, $username, $password, $dbname);
@@ -58,6 +58,7 @@ function logout() {
     <link href="../css/signin.css" rel="stylesheet">
     <link href="../css/meuEstilo.css" rel="stylesheet">
     <link href="../css/introjs.css" rel="stylesheet">
+    <link href="../css/font-awesome.min.css" rel="stylesheet">
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
     <link href="../css/ie10-viewport-bug-workaround.css" rel="stylesheet">
 </head>

@@ -3,6 +3,12 @@ require_once 'cabecalho.php';
 // Chamada da função que faz a conexão com o banco de dados
 connectDataBase();
 ?>
+<style>
+	.teste {
+		margin-right: 0;
+		float: right;
+	}
+</style>
 <?php
 // Se estiver logado, o sistema de busca funciona normalmente
 if(isLogged()) {
@@ -82,7 +88,7 @@ if($result && isset($_POST['texto'])) {
 							$id = $array['pac_id'];
 							echo "
 							<tr>
-								<td><a href='paciente.php?id=" . $id . "' data-step='3' data-intro='Clique no nome do paciente para exibir seus dados' data-position='top'>" . $array['pac_nome'] . "</a></td>
+								<td><a href='paciente.php?id=" . $id . "' data-step='3' data-intro='Clique no nome do paciente para exibir seus dados' data-position='top'>" . $array['pac_nome'] . "</a><a href='#' data-step='4' data-intro='Clique aqui para remover o paciente da base de dados' data-position='top' title='Remover Paciente' class='btn btn-danger teste'><i class='fa fa-trash-o' aria-hidden='true'></i></a></td>
 								<td>" . $array['pac_telefone_1'] . "</td>
 								<td>" . $array['pac_email'] . "</td>
 							</tr>
