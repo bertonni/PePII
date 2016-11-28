@@ -9,7 +9,7 @@ function connectDataBase() {
   global $connection;
   $servername = "localhost";
   $username ="root";
-  $password ="";
+  $password ="root";
   $dbname = "sistema_de_cadastro";
 
   $connection = mysqli_connect($servername, $username, $password, $dbname);
