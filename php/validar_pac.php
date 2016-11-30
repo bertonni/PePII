@@ -5,31 +5,34 @@ connectDataBase();
 
 // Salva os dados preenchidos no formulário em variáveis para inserir no banco de dados
 $nome = strtoupper($_POST['nome']);
-$endereco = $_POST['endereco'];
+$nome = mysqli_real_escape_string($connection, $nome);
+
+$endereco = mysqli_real_escape_string($connection, $_POST['endereco']);
 if(isset($_POST['numero']) && $_POST['numero'] != ""){
-	$numero = $_POST['numero'];
+	$numero = mysqli_real_escape_string($connection, $_POST['numero']);
 } else {
 	$numero = "S/N";
 }
-$bairro = $_POST['bairro'];
-$cidade = $_POST['cidade'];
+$bairro = mysqli_real_escape_string($connection, $_POST['bairro']);
+$cidade = mysqli_real_escape_string($connection, $_POST['cidade']);
 if(isset($_POST['rg']) && $_POST['rg'] != ""){
-	$rg = $_POST['rg'];
+	$rg = mysqli_real_escape_string($connection, $_POST['rg']);
 } else {
 	$rg = "Não Cadastrado";
 }
 if(isset($_POST['cpf']) && $_POST['cpf'] != ""){
-	$cpf = $_POST['cpf'];
+	$cpf = mysqli_real_escape_string($connection, $_POST['cpf']);
 } else {
 	$cpf = "Não Cadastrado";
 }
 $endereco .= ", Nº " . $numero . ", " . $bairro . " - " . $cidade;
 $endereco = strtoupper($endereco);
-$email = $_POST['email'];
-$nasc = $_POST['nasc'];
-$fone1 = $_POST['fone1'];
+$endereco = mysqli_real_escape_string($connection, $endereco);
+$email = mysqli_real_escape_string($connection, $_POST['email']);
+$nasc = mysqli_real_escape_string($connection, $_POST['nasc']);
+$fone1 = mysqli_real_escape_string($connection, $_POST['fone1']);
 if(isset($_POST['fone2']) && $_POST['fone2'] != ""){
-	$fone2 = $_POST['fone2'];
+	$fone2 = mysqli_real_escape_string($connection, $_POST['fone2']);
 } else {
 	$fone2 = "Não Cadastrado";
 }

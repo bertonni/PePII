@@ -5,7 +5,7 @@ if(isset($_POST['enviar'])) {
     unset($_POST['enviar']);
     // Salva o nome do usuário na variável $username
     $username = strtolower($_POST['username']);
-    $username = preg_replace('/[^[:alnum:]_]/', '',$username);
+    $username = mysqli_real_escape_string($connection, $username);
     // Consulta para saber se há um funcionário com esse nome de usuário cadastrado no banco de dados
     $sql = "SELECT fun_usuario FROM funcionarios WHERE lower(fun_usuario) = '$username'";
     $result = mysqli_query($connection, $sql);
@@ -28,7 +28,7 @@ if(isset($_POST['enviar'])) {
     $pergunta = $array['fun_secret_question'];
 } else {
     // Faz a mesma consulta anterior, mas só entrará aqui se a resposta que foi digitada foi errada
-    $username = $_SESSION['username'];
+    $username = mysqli_real_escape_string($connection, $_SESSION['username']);
     $username = strtolower($username);
     $sql = "SELECT fun_secret_question FROM funcionarios WHERE lower(fun_usuario) = '$username'";
     $result = mysqli_query($connection, $sql);
@@ -54,7 +54,7 @@ if(isset($_POST['enviar'])) {
             </div>
             <div class="col-md-12">
                 <input type="hidden" name="username" value="<?= $username ?>">
-                <button type="submit" name="submeter" class="btn btn-primary" data-step="3" data-intro="Depois de digitar a reposta, clique aqui para enviar os dados e ter acesso à página de recuperação de senha" data-position='top'>Enviar</button>
+                <button type="submit" name="submeter" class="btn btn-primary" data-step="3" data-intro="Depois de digitar a resposta, clique aqui para enviar os dados e ter acesso à página de recuperação de senha" data-position='top'>Enviar</button>
                 <a href="login.php" class="btn btn-danger" data-step="4" data-intro="Clique aqui para cancelar a recuperação de senha (Você será redirecionado para a página de login)" data-position='top'>Cancelar</a>
             </div>
         </form>

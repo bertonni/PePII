@@ -6,8 +6,8 @@ if(isset($_POST['submeter'])) {
     if(!isset($_SESSION['username'])) {
         $_SESSION['username'] = $_POST['username'];
     }
-    $username = $_POST['username'];
-    $pergunta = $_POST['pergunta'];
+    $username = mysqli_real_escape_string($connection, $_POST['username']);
+    $pergunta = mysqli_real_escape_string($connection, $_POST['pergunta']);
     $resposta = md5($_POST['resposta']);
     // Query para saber se a resposta digitada pelo usuário corresponde à que ele salvou no momento do cadastro
     $sql = "SELECT fun_secret_question, fun_secret_answer FROM funcionarios WHERE lower(fun_usuario) = '$username' AND fun_secret_question = '$pergunta' AND fun_secret_answer = '$resposta'";
@@ -61,8 +61,8 @@ if(isset($_POST['submeter'])) {
 </script>
 <?php
 if(isset($_POST['atualizar_senha'])) {
-    $usuario = $_POST['username'];
-    $senha = preg_replace('/[^[:alnum:]_]/', '', $_POST['senha']);
+    $usuario = mysqli_real_escape_string($connection, $_POST['username']);
+    $senha = mysqli_real_escape_string($connection, $_POST['senha']);
     $senha = md5($senha);
 
     $sql = "UPDATE `funcionarios` SET `fun_senha`='$senha' WHERE `funcionarios`.`fun_usuario`='$usuario'";

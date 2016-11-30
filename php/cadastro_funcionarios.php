@@ -57,6 +57,20 @@ if(isLogged() && isAdmin()) {
 					<button type="reset" class="btn btn-default" title="Limpar" data-step="9" data-intro="Clique aqui para limpar o formulário (Todos os campos serão limpos)" data-position='top'>Limpar</button>
 				</div>
 			</form>
+            <?php
+            if(isset($_SESSION['userAlreadyExist'])) {
+                ?>
+                <div class="col-md-6 alert alert-danger">
+                    <button type="button" class="close" data-dismiss="alert">&times;</button>
+                    <h4>Atenção!</h4>
+                    Você não pode utilizar esse nome de usuário pois ele já está em uso!
+                </div>
+                <div class="col-md-7">
+                </div>
+                <?php
+                unset($_SESSION['userAlreadyExist']);
+            }
+            ?>
 		</div>
 	</div>
 <script type="text/javascript">

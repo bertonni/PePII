@@ -48,10 +48,9 @@ if(isLogged()) {
 // Verifica se a variável $_POST['texto'] está setada e não está vazia (se o usuário digitou algo no input de busca e clicou no botão "Procurar")
 if(isset($_POST['texto']) && $_POST['texto'] != "") {
 	// Salva o conteúdo do input name="texto" na variável $text
-	$text = $_POST['texto'];
 
-	// Utiliza a função para salvar na variável $text apenas letras(Maiúsculas e/ou Minúsculas) e números, previnindo a SQL Injection, pois os caracteres especiais serão removidos
-	$text = preg_replace('/[^[:alnum:]_]/', '',$text);
+	// Utiliza a função para escapar aspas simples e duplas da variável $text, previnindo a SQL Injection
+	$text = mysqli_real_escape_string($connection, $_POST['texto']);
 	$text = strtolower($text);
 
 	// SQL para buscar no banco todos os dados do paciente que contenha o texto que foi digitado no input de busca e ordenar o resultado por ordem alfabética
@@ -86,9 +85,10 @@ if($result && isset($_POST['texto'])) {
 						while($array = mysqli_fetch_array($result)) {
 			// Salva o ID do paciente para passar pelo método GET no link que leva à página de dados do paciente
 							$id = $array['pac_id'];
+							$nome = $array['pac_nome'];
 							echo "
 							<tr>
-								<td><a href='paciente.php?id=" . $id . "' data-step='3' data-intro='Clique no nome do paciente para exibir seus dados' data-position='top'>" . $array['pac_nome'] . "</a><a href='#' data-step='4' data-intro='Clique aqui para remover o paciente da base de dados' data-position='top' title='Remover Paciente' class='btn btn-danger teste'><i class='fa fa-trash-o' aria-hidden='true'></i></a></td>
+								<td><a href='paciente.php?id=" . $id . "' data-step='3' data-intro='Clique no nome do paciente para exibir seus dados' data-position='top'>" . $nome . "</a><a href='#' data-step='4' data-intro='Clique aqui para remover o paciente da base de dados' data-position='top' title='Remover Paciente' class='btn btn-danger teste' onclick='confirmar()'><i class='fa fa-trash-o' aria-hidden='true'></i></a></td>
 								<td>" . $array['pac_telefone_1'] . "</td>
 								<td>" . $array['pac_email'] . "</td>
 							</tr>
@@ -101,6 +101,18 @@ if($result && isset($_POST['texto'])) {
 				</div>
 			</div>";
 		}
+		?>
+		<script>
+			function confirmar() {
+				bootbox.confirm("Tem certeza que deseja excluir o paciente <?= $nome ?>? (Esta ação não poderá ser desfeita)",
+				function(result){
+					if(result) {
+						$(location).attr('href', 'paciente.php?id=<?=$id ?>');
+					}
+				});
+			}
+		</script>
+		<?php
 		disconnectDataBase();
 		require_once 'rodape.php';
 		?>

@@ -5,11 +5,11 @@ connectDataBase();
 
 // Salva o login e senha digitados pelo usuário no formulário de login
 $usuario = $_POST['usuario'];
-$senha = md5($_POST['senha']); // Aplica a função HASH para a senha
 
-// Elimina qualquer caractere que não seja letra(maiúscula e minúscula) e número das variáveis de usuário e senha
-$usuario = preg_replace('/[^[:alnum:]_]/', '',$usuario);
-$senha = preg_replace('/[^[:alnum:]_]/', '',$senha);
+// Escapa aspas duplas ou simples número das variáveis de usuário e senha
+$usuario = mysqli_real_escape_string($connection, $usuario);
+$senha = mysqli_real_escape_string($connection, $senha);
+$senha = md5($_POST['senha']); // Aplica a função HASH para a senha
 
 // Consulta para buscar no banco usuário e senha que sejam iguais aos digitados no formulário de login, além do papel(role) do funcionário
 $sql = "SELECT fun_usuario, fun_senha, fun_role FROM funcionarios WHERE fun_usuario = '$usuario' AND fun_senha = '$senha'";
