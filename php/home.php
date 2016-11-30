@@ -1,5 +1,6 @@
 <?php
 require_once 'cabecalho.php';
+if(isLogged()) {
 ?>
 <title>Home</title>
 
@@ -23,5 +24,17 @@ require_once 'cabecalho.php';
 </div> <!-- /container -->
 
 <?php
+} else {
+// Se o usuário não estiver logado, exibe uma mensagem pedindo para que ele faça o login
+?>
+<div class="container marketing">
+    <div class="container theme-showcase" role="main">
+        <div id="cadastro" class="page-header">
+            <h2>Por favor, faça o login para usar o sistema</h2>
+        </div>
+    </div>
+</div>
+<?php
+}
 require_once 'rodape.php';
 ?>
