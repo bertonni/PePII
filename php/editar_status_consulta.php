@@ -118,7 +118,7 @@ if(isLogged()) {
 			// Se sim, exibe um select ao invés da mensagem não editável
 					if($id_consulta == $consultas['agd_id']) {
 						?>
-						<form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="POST">
+						<form action="<?= ($_SERVER["PHP_SELF"]);?>" name="formConsulta" id="formConsulta" method="POST">
 							<td class='td_one'>
 								<?php
 								echo "<input type='date' class='form-control' id='data' min='" . date("Y-m-d") . "' name='data_consulta' value='" . $consultas['agd_data'] . "'>";
@@ -153,7 +153,7 @@ if(isLogged()) {
 									<select class="form-control" name="medico" id="medico">
 										<option value="<?= $consultas['agd_medico'] ?>"><?= $consultas['agd_medico'] ?></option>
 										<option value="Ana Beatriz">Ana Beatriz</option>
-										<option value="Mateus Nóbrega">Mateus Nobrega</option>
+										<option value="Mateus Nobrega">Mateus Nobrega</option>
 										<option value="Bertonni Paz">Bertonni Paz</option>
 									</select>
 								</td>
@@ -186,7 +186,7 @@ if(isLogged()) {
 										</select>
 									</td>
 									<td>
-										<select class='form-control' name="status">
+										<select class='form-control' name="status" id="status">
 											<option value='Agendada'>Agendada</option>
 											<option value='Realizada'>Realizada</option>
 											<option value='Cancelada'>Cancelada</option>
@@ -215,11 +215,22 @@ if(isLogged()) {
 					<div class='col-md-12'>
 						<button type="submit" class="btn btn-primary" name="salvar" title="Salvar">Salvar</button>
 						<button type="submit" class="btn btn-danger" name="cancelar" title="Cancelar">Cancelar</button>
-						<!-- <a href="paciente.php?id=<?= $id ?>" class="btn btn-danger" title="Cancelar">Cancelar</a> -->
 					</div>
 				</form>
 			</div>
 		</div>
+		<!-- <script>
+			$('#formConsulta').on('submit', function () {
+			    if($('#status').val() == "Cancelada") {
+			        bootbox.confirm("A consulta será cancelada e removida da base de dados, tem certeza que deseja cancelar? (Essa ação não poderá ser desfeita!)",
+		        	function(result) {
+		        		if(!result) {
+			    			return false;
+		        		}
+		        	});
+			    }
+			});
+		</script> -->
 		<br>
 		<br>
 		<?php
@@ -244,33 +255,50 @@ if(isset($_POST['salvar'])) {
 	$id_consulta = $_POST['id_consulta'];
 	$id_paciente = $_POST['id_paciente'];
 
-	// Consulta para saber se já existe um agendamento para o paciente que está alterando a consulta com a data/hora pretendida
-	$sql = "SELECT * FROM `agendamentos` WHERE `agd_data` = '$data' AND `agd_hora` = '$hora' AND `agd_pac_id` = '$id_paciente'";
-	$result = mysqli_query($connection, $sql);
-	$rows1 = mysqli_num_rows($result);
+	if($status == "Cancelada") {
+		$sql = "DELETE FROM agendamentos WHERE agd_id = '$id_consulta'";
+		$result = mysqli_query($connection, $sql);
 
-	// Consulta para saber se já existe uma consulta marcada para a mesma hora/data/médico salva no banco para qualquer outro paciente
-	$sql = "SELECT * FROM `agendamentos` WHERE `agd_data` = '$data' AND `agd_hora` = '$hora' AND `agd_medico` = '$medico'";
-	$results = mysqli_query($connection, $sql);
-	$rows2 = mysqli_num_rows($results);
-
-	if($rows1 == 0 && $rows2 == 0) {
-		unset($_SESSION['erroConsulta']);
-	// Query para alterar o status da consulta desejada
-		$sql = "UPDATE `agendamentos` SET `agd_data` = '$data', `agd_hora` = '$hora', `agd_status` = '$status', `agd_medico` = '$medico', `agd_especialidade` = '$especialidade' WHERE `agendamentos`.`agd_id` = '$id_consulta'";
-	// Se alterado com sucesso, redireciona para a página do paciente
-		if(mysqli_query($connection, $sql)) {
+		if($result) {
+			if(!isset($_SESSION['consultaRemovida'])) {
+				$_SESSION['consultaRemovida'] = true;
+			}
 			header("location: paciente.php?id=" . $id_paciente);
-		} else {
-			echo "Error: " . $sql . "<br>" . mysqli_error($connection);
 		}
 	} else {
-		if(!isset($_SESSION['erroConsulta'])) {
-			$_SESSION['erroConsulta'] = true;
-			$_SESSION['idConsulta'] = $id_consulta;
-			$_SESSION['idPaciente'] = $id_paciente;
+
+		// Consulta para saber se já existe um agendamento para o paciente que está alterando a consulta com a data/hora pretendida
+		$sql = "SELECT * FROM `agendamentos` WHERE agd_id = '$id_consulta'";
+		$result = mysqli_query($connection, $sql);
+		$rows = mysqli_num_rows($result);
+
+		$sql = "SELECT * FROM `agendamentos` WHERE `agd_data` = '$data' AND `agd_hora` = '$hora' AND `agd_pac_id` = '$id_paciente' AND agd_id != '$id_consulta'";
+		$result = mysqli_query($connection, $sql);
+		$rows1 = mysqli_num_rows($result);
+
+		// Consulta para saber se já existe uma consulta marcada para a mesma hora/data/médico salva no banco para qualquer outro paciente
+		$sql = "SELECT * FROM `agendamentos` WHERE `agd_data` = '$data' AND `agd_hora` = '$hora' AND `agd_medico` = '$medico' AND agd_pac_id != '$id_paciente'";
+		$results = mysqli_query($connection, $sql);
+		$rows2 = mysqli_num_rows($results);
+
+		if($rows > 0 && $rows1 == 0 && $rows2 == 0) {
+			unset($_SESSION['erroConsulta']);
+		// Query para alterar o status da consulta desejada
+			$sql = "UPDATE `agendamentos` SET `agd_data` = '$data', `agd_hora` = '$hora', `agd_status` = '$status', `agd_medico` = '$medico', `agd_especialidade` = '$especialidade' WHERE `agendamentos`.`agd_id` = '$id_consulta'";
+		// Se alterado com sucesso, redireciona para a página do paciente
+			if(mysqli_query($connection, $sql)) {
+				header("location: paciente.php?id=" . $id_paciente);
+			} else {
+				echo "Error: " . $sql . "<br>" . mysqli_error($connection);
+			}
+		} else {
+			if(!isset($_SESSION['erroConsulta'])) {
+				$_SESSION['erroConsulta'] = true;
+				$_SESSION['idConsulta'] = $id_consulta;
+				$_SESSION['idPaciente'] = $id_paciente;
+			}
+			header("location: paciente.php?id=" . $id_paciente);
 		}
-		header("location: paciente.php?id=" . $id_paciente);
 	}
 } else if(isset($_POST['cancelar'])) {
 	unset($_SESSION['erroConsulta']);

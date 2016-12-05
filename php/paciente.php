@@ -76,6 +76,20 @@ if(isLogged()) {
 				?>
 				<div id="cadastro_pac" class="page-header">
 					<h1>Histórico de Consultas</h1>
+					<?php
+		            if(isset($_SESSION['consultaRemovida'])) {
+		                ?>
+		                <div class="col-md-6 alert alert-success">
+		                    <button type="button" class="close" data-dismiss="alert">&times;</button>
+		                    <h4>Sucesso!</h4>
+		                    A consulta foi cancelada com sucesso!
+		                </div>
+		                <div class="col-md-7">
+		                </div>
+		                <?php
+		                unset($_SESSION['consultaRemovida']);
+		            }
+		            ?>
 				</div>
 				<div class="row">
 					<table class='table table-striped table-bordered'>

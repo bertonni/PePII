@@ -34,8 +34,8 @@ if(isLogged()) {
 
                     <select class="form-control" name="medico" id="medico" data-step="2" data-intro="Clique aqui para escolher o médico" data-position='top'>
                         <option value="default">Escolher médico</option>
-						<option value="Ana Paula">Ana Paula</option>
-						<option value="Mateus Nóbrega">Mateus Nobrega</option>
+						<option value="Ana Beatriz">Ana Beatriz</option>
+						<option value="Mateus Nobrega">Mateus Nobrega</option>
 						<option value="Bertonni Paz">Bertonni Paz</option>
 					</select>
 

@@ -16,6 +16,8 @@ if(isLogged()) {
 	<div class='container marketing'>
 		<div class='container theme-showcase' role='main'>
 			<div id='cadastro_pac' class='page-header'>
+			<a href="home.php" class="btn btn-warning voltar">Voltar</a>
+			<a class="btn btn-info editar" href="javascript:void(0);" onclick="javascript:introJs().setOption('showProgress', true).start();">Tutorial</a>
 				<h1>Buscar Paciente</h1>
 			</div>
 			<form class="navbar-form navbar-left" action="busca.php" method="POST">
@@ -24,9 +26,34 @@ if(isLogged()) {
 				</div>
 				<button type="submit" class="btn btn-default" data-step="2" data-intro="Depois de digitar o nome do paciente, clique aqui para exibir os resultados da busca" data-position='bottom'>Procurar</button>
 			</form>
-			<a href="home.php" class="btn btn-warning voltar">Voltar</a>
-			<a class="btn btn-info editar" href="javascript:void(0);" onclick="javascript:introJs().setOption('showProgress', true).start();">Tutorial</a>
+			<br>
+			<br>
+			<br>
 			<?php
+			if(isset($_SESSION['erro'])) {
+                ?>
+                <div class="col-md-6 alert alert-danger">
+                    <button type="button" class="close" data-dismiss="alert">&times;</button>
+                    <h4>Atenção!</h4>
+                    O paciente <?= $_SESSION['pacRemovido'] ?> não pôde ser removido! Tente novamente mais tarde.
+                </div>
+                <div class="col-md-7">
+                </div>
+                <?php
+                unset($_SESSION['erro']);
+                unset($_SESSION['pacRemovido']);
+            } else if(isset($_SESSION['pacRemovido'])) {
+                ?>
+                <div class="col-md-6 alert alert-success">
+                    <button type="button" class="close" data-dismiss="alert">&times;</button>
+                    <h4>Sucesso!</h4>
+                    O paciente <?= $_SESSION['pacRemovido'] ?> foi removido com sucesso!
+                </div>
+                <div class="col-md-7">
+                </div>
+                <?php
+                unset($_SESSION['pacRemovido']);
+            }
 		// Se não está logado, precisa fazer o login
 		} else {
 			?>
@@ -81,14 +108,14 @@ if($result && isset($_POST['texto'])) {
 					<th class='prev_td'>Telefone</td>
 						<th class='prev_td'>E-mail</td>
 						</tr>";
-		// Enquanto houver dados no array, executa os comandos a seguir
+			// Enquanto houver dados no array, executa os comandos a seguir
 						while($array = mysqli_fetch_array($result)) {
 			// Salva o ID do paciente para passar pelo método GET no link que leva à página de dados do paciente
 							$id = $array['pac_id'];
 							$nome = $array['pac_nome'];
 							echo "
 							<tr>
-								<td><a href='paciente.php?id=" . $id . "' data-step='3' data-intro='Clique no nome do paciente para exibir seus dados' data-position='top'>" . $nome . "</a><a href='#' data-step='4' data-intro='Clique aqui para remover o paciente da base de dados' data-position='top' title='Remover Paciente' class='btn btn-danger teste' onclick='confirmar()'><i class='fa fa-trash-o' aria-hidden='true'></i></a></td>
+								<td><a href='paciente.php?id=" . $id . "' data-step='3' data-intro='Clique no nome do paciente para exibir seus dados' data-position='top'>" . $nome . "</a><a href='#' data-step='4' data-intro='Clique aqui para remover o paciente da base de dados' data-position='top' title='Remover Paciente' class='btn btn-danger teste' onclick='confirmar(\"$nome\", \"$id\")'><i class='fa fa-trash-o' aria-hidden='true'></i></a></td>
 								<td>" . $array['pac_telefone_1'] . "</td>
 								<td>" . $array['pac_email'] . "</td>
 							</tr>
@@ -103,11 +130,11 @@ if($result && isset($_POST['texto'])) {
 		}
 		?>
 		<script>
-			function confirmar() {
-				bootbox.confirm("Tem certeza que deseja excluir o paciente <?= $nome ?>? (Esta ação não poderá ser desfeita)",
+			function confirmar(nome, id) {
+				bootbox.confirm("Tem certeza que deseja excluir o paciente " + nome + "? (Esta ação não poderá ser desfeita)",
 				function(result){
 					if(result) {
-						$(location).attr('href', 'paciente.php?id=<?=$id ?>');
+						$(location).attr('href', 'remover_pac.php?id=' + id);
 					}
 				});
 			}
