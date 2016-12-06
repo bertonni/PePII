@@ -50,14 +50,10 @@ if($rows1 == 0 && $rows2 == 0) {
 	    echo "Error: " . $sql . "<br>" . mysqli_error($connection);
 	}
 } else {
-	// Se existir um agendamento para a data/hora desejadas, exibe mensagem de erro!
-	echo "<div class='container marketing'>
-	            <div class='container theme-showcase' role='main'>
-	                <h2>Já existe uma consulta marcada para a data, horário e médico desejados.<br> Por favor, selecione outra data ou horário!!</h2><br>
-	                <button class='btn btn-warning voltar' onClick='history.go(-1)'>Voltar</button>
-	            </div>
-	      </div>
-	    ";
+	if(!isset($_SESSION['duplicidadeConsulta'])) {
+		$_SESSION['duplicidadeConsulta'] = true;
+	}
+	header("location: consulta.php");
 }
 disconnectDataBase();
 require_once 'rodape.php';
