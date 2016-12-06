@@ -116,7 +116,7 @@ if(isLogged()) {
 					<?php
 			// Checa se o id da consulta exibida é igual ao id da consulta que se deseja alterar a situação
 			// Se sim, exibe um select ao invés da mensagem não editável
-					if($id_consulta == $consultas['agd_id']) {
+					if($id_consulta == $consultas['agd_id']):
 						?>
 						<form action="<?= ($_SERVER["PHP_SELF"]);?>" name="formConsulta" id="formConsulta" method="POST">
 							<td class='td_one'>
@@ -125,71 +125,61 @@ if(isLogged()) {
 								?>
 								<td>
 									<select class="form-control" name="hora_consulta" id="hora_consulta">
-										<option value="<?= $consultas['agd_hora'] ?>" selected><?= $consultas['agd_hora'] ?></option>
-										<option value="08:00">08:00</option>
-										<option value="08:30">08:30</option>
-										<option value="09:00">09:00</option>
-										<option value="09:30">09:30</option>
-										<option value="10:00">10:00</option>
-										<option value="10:30">10:30</option>
-										<option value="11:00">11:00</option>
-										<option value="11:30">11:30</option>
-										<option value="12:00">12:00</option>
-										<option value="12:30">12:30</option>
-										<option value="13:00">13:00</option>
-										<option value="13:30">13:30</option>
-										<option value="14:00">14:00</option>
-										<option value="14:30">14:30</option>
-										<option value="15:00">15:00</option>
-										<option value="15:30">15:30</option>
-										<option value="16:00">16:00</option>
-										<option value="16:30">16:30</option>
-										<option value="17:00">17:00</option>
+										<?php for($i = 8; $i <= 17; $i += 0.5): ?>
+											<?php $k = str_pad(intval($i), 2, '0', STR_PAD_LEFT) . ':' . ($i == intval($i) ? '00' : '30'); ?>
+											<option value="<?= $k ?>" <?= $consultas['agd_hora'] == $k ? 'selected' : '' ?>><?= $k ?></option>
+										<?php endfor ?>
 									</select>
 								</td>
 
 								<td><?= $funcionario ?></td>
 								<td>
 									<select class="form-control" name="medico" id="medico">
-										<option value="<?= $consultas['agd_medico'] ?>"><?= $consultas['agd_medico'] ?></option>
-										<option value="Ana Beatriz">Ana Beatriz</option>
-										<option value="Mateus Nobrega">Mateus Nobrega</option>
-										<option value="Bertonni Paz">Bertonni Paz</option>
+										<?php
+										$medicos = ["Ana Beatriz", "Mateus Nobrega", "Bertonni Paz"];
+
+										for ($i = 0; $i < 3; $i++):
+											if($consultas['agd_medico'] == $medicos[$i]): ?>
+												<option value="<?= $medicos[$i] ?>" selected><?= $medicos[$i] ?></option>
+												<?php else: ?>
+													<option value="<?= $medicos[$i] ?>"><?= $medicos[$i] ?></option>
+											<?php endif ?>
+										<?php
+										// if($especialidade == "Endodontia") {
+										endfor
+										?>
 									</select>
 								</td>
 								<td>
 									<select class="form-control" name="especialidade" id="especialidade">
 									<!-- Deixa a opção que está salva no banco de dados selecionada por padrão -->
 										<?php
-										if($especialidade == "Endodontia") {
-											?>
-											<option value="Endodontia" selected>Endodontia</option>
-											<?php } else { ?>
-											<option value="Endodontia">Endodontia</option>
-											<?php } if($especialidade == "Odontopediatria") { ?>
-											<option value="Odontopediatria" selected>Odontopediatria</option>
-											<?php } else { ?>
-											<option value="Odontopediatria">Odontopediatria</option>
-											<?php } if($especialidade == "Ortodontia") { ?>
-											<option value="Ortodontia" selected>Ortodontia</option>
-											<?php } else { ?>
-											<option value="Ortodontia">Ortodontia</option>
-											<?php } if($especialidade == "Periodontia") { ?>
-											<option value="Periodontia" selected>Periodontia</option>
-											<?php } else { ?>
-											<option value="Periodontia">Periodontia</option>
-											<?php } if($especialidade == "Prótese Dentária") { ?>
-											<option value="Prótese Dentária" selected>Prótese Dentária</option>
-											<?php } else { ?>
-											<option value="Prótese Dentária">Prótese Dentária</option>
-											<?php } ?>
+										$especialidades = ["Endodontia", "Odontopediatria", "Ortodontia", "Periodontia", "Prótese Dentária"];
+
+										for ($i = 0; $i < 5; $i++):
+											if($consultas['agd_especialidade'] == $especialidades[$i]): ?>
+												<option value="<?= $especialidades[$i] ?>" selected><?= $especialidades[$i] ?></option>
+												<?php else: ?>
+													<option value="<?= $especialidades[$i] ?>"><?= $especialidades[$i] ?></option>
+											<?php endif ?>
+										<?php
+										endfor
+										?>
 										</select>
 									</td>
 									<td>
+									<?php $situacao = ["Agendada", "Realizada", "Cancelada"]; ?>
 										<select class='form-control' name="status" id="status">
-											<option value='Agendada'>Agendada</option>
-											<option value='Realizada'>Realizada</option>
-											<option value='Cancelada'>Cancelada</option>
+										<?php
+										for ($i = 0; $i < 3; $i++):
+											if($consultas['agd_status'] == $situacao[$i]): ?>
+												<option value="<?= $situacao[$i] ?>" selected><?= $situacao[$i] ?></option>
+												<?php else: ?>
+													<option value="<?= $situacao[$i] ?>"><?= $situacao[$i] ?></option>
+											<?php endif ?>
+										<?php
+										endfor
+										?>
 										</select>
 									</td>
 								</tr>
@@ -198,7 +188,7 @@ if(isLogged()) {
 									<td><input type="hidden" name="id_paciente" value="<?= $id_paciente ?>"></td>
 								</tr>
 								<?php
-							} else {
+							else:
 					// Se o id da consulta não for igual ao id da consulta que se deseja alterar, o campo não fica editável
 								?>
 								<td class='td_one'><?= date_format(new DateTime($consultas['agd_data']), "d/m/Y") ?></td>
@@ -208,7 +198,7 @@ if(isLogged()) {
 								<td><?= $especialidade ?></td>
 								<td><?= $consultas['agd_status'] ?></td>
 								<?php
-							}
+							endif;
 						}
 						?>
 					</table>
@@ -219,18 +209,21 @@ if(isLogged()) {
 				</form>
 			</div>
 		</div>
-		<!-- <script>
-			$('#formConsulta').on('submit', function () {
-			    if($('#status').val() == "Cancelada") {
+		<script>
+			$('#formConsulta').on('submit', function (event) {
+				var submit = $(event.target).attr('submit');
+			    if($('#status').val() == "Cancelada" && !submit) {
+        			event.preventDefault();
 			        bootbox.confirm("A consulta será cancelada e removida da base de dados, tem certeza que deseja cancelar? (Essa ação não poderá ser desfeita!)",
 		        	function(result) {
-		        		if(!result) {
-			    			return false;
+		        		if(result) {
+		        			$(event.target).attr('submit', true);
+			    			$(event.target).submit();
 		        		}
 		        	});
 			    }
 			});
-		</script> -->
+		</script>
 		<br>
 		<br>
 		<?php
@@ -245,7 +238,8 @@ if(isLogged()) {
 			<?php
 		}
 // Se clicou no botão "Salvar"
-if(isset($_POST['salvar'])) {
+// if(isset($_POST['salvar'])) {
+if($_SERVER['REQUEST_METHOD'] == 'POST') {
 // Salva o novo status, ID da consulta e ID do paciente em variáveis
 	$status = $_POST['status'];
 	$medico = $_POST['medico'];
@@ -255,6 +249,7 @@ if(isset($_POST['salvar'])) {
 	$id_consulta = $_POST['id_consulta'];
 	$id_paciente = $_POST['id_paciente'];
 
+	// Se a situação(status) da consulta for 'Cancelada', remove essa consulta do banco de dados
 	if($status == "Cancelada") {
 		$sql = "DELETE FROM agendamentos WHERE agd_id = '$id_consulta'";
 		$result = mysqli_query($connection, $sql);
