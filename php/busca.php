@@ -8,6 +8,9 @@ connectDataBase();
 		margin-right: 0;
 		float: right;
 	}
+	span {
+		font-size: 22px;
+	}
 </style>
 <?php
 // Se estiver logado, o sistema de busca funciona normalmente
@@ -59,6 +62,13 @@ if(isLogged()) {
 			?>
 			<div class="container marketing">
 				<div class="container theme-showcase" role="main">
+				<!-- <div class="col-md-6 alert alert-danger">
+                    <button type="button" class="close" data-dismiss="alert">&times;</button>
+                    <h2>Atenção!</h2>
+                    <span>Por favor, faça o login para fazer uma busca!</span>
+                </div>
+                <div class="col-md-7">
+                </div> -->
 					<div id="cadastro" class="page-header">
 						<h2>Por favor, faça o login para fazer uma busca</h2>
 					</div>
@@ -122,7 +132,13 @@ if($result && isset($_POST['texto'])) {
 							";
 						}
 					} else {
-						echo "<h2>Não foram encontrados resultados para sua busca</h2>";
+						echo "<div class='col-md-5 alert alert-warning'>
+			                    <button type='button' class='close' data-dismiss='alert'>&times;</button>
+			                    <h4>Atenção!</h4>
+			                    Não foram encontrados resultados para sua busca!
+			                </div>
+			                <div class='col-md-7'>
+			                </div>";
 					}
 					echo "</table>
 				</div>
