@@ -78,6 +78,20 @@ if(isLogged()) {
 					<button type="reset" class="btn btn-default" title="Limpar" data-step="6" data-intro="Clique aqui para limpar o formulário (Todos os campos serão limpos)" data-position='top'>Limpar</button>
 				</div>
                 </div>
+                <?php
+                if(isset($_SESSION['duplicidadeConsulta'])) {
+                ?>
+                    <div class="col-md-6 alert alert-danger">
+                        <button type="button" class="close" data-dismiss="alert">&times;</button>
+                        <h4>Atenção!</h4>
+                        Já existe uma consulta marcada para a data, horário e médico desejados. Por favor, selecione outra data ou horário!!
+                    </div>
+                    <div class="col-md-7">
+                    </div>
+                    <?php
+                    unset($_SESSION['duplicidadeConsulta']);
+                }
+                 ?>
 
 
 <?php
