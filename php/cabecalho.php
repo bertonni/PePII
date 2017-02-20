@@ -60,7 +60,7 @@ function logout() {
     <link href="../css/introjs.css" rel="stylesheet">
     <link href="../css/font-awesome.min.css" rel="stylesheet">
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-    <link href="../css/ie10-viewport-bug-workaround.css" rel="stylesheet">
+    <!-- <link href="../css/ie10-viewport-bug-workaround.css" rel="stylesheet"> -->
 </head>
 <body>
 	<nav class="navbar navbar-default">
@@ -79,13 +79,19 @@ function logout() {
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
+      <?php
+        if(isLogged()) {
+      ?>
         <li class="list_item"><a href="home.php">Página Inicial</a></li>
         <li class="list_item"><a href="consultas_do_dia.php">Consultas de Hoje</a></li>
         <?php
-        if(isLogged() && isAdmin()) {
+          if(isAdmin()) {
         ?>
         <li class="list_item"><a href="cadastro_funcionarios.php">Cadastrar Funcionário</a></li>
-        <?php } ?>
+        <?php
+          }
+        }
+        ?>
         <li class="dropdown">
           <!-- <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Cadastro<span class="caret"></span></a>
           <ul class="dropdown-menu">
