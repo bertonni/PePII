@@ -125,7 +125,7 @@ if($result && isset($_POST['texto'])) {
 							$nome = $array['pac_nome'];
 							echo "
 							<tr>
-								<td><a href='paciente.php?id=" . $id . "' data-step='3' data-intro='Clique no nome do paciente para exibir seus dados' data-position='top'>" . $nome . "</a><a href='#' data-step='4' data-intro='Clique aqui para remover o paciente da base de dados' data-position='top' title='Remover Paciente' class='btn btn-danger teste' onclick='confirmar(\"$nome\", \"$id\")'><i class='fa fa-trash-o' aria-hidden='true'></i></a></td>
+								<td><a href='paciente.php?id=" . $id . "' data-step='3' data-intro='Clique no nome do paciente para exibir seus dados, marcar ou alterar consultas.' data-position='top'>" . $nome . "</a><a href='#' data-step='4' data-intro='Clique aqui para remover o paciente da base de dados' data-position='top' title='Remover Paciente' class='btn btn-danger teste' onclick='confirmar(\"$nome\", \"$id\")'><i class='fa fa-trash-o' aria-hidden='true'></i></a></td>
 								<td>" . $array['pac_telefone_1'] . "</td>
 								<td>" . $array['pac_email'] . "</td>
 							</tr>
