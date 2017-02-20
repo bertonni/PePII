@@ -82,7 +82,7 @@ if(isLogged()) {
 		                <div class="col-md-6 alert alert-success">
 		                    <button type="button" class="close" data-dismiss="alert">&times;</button>
 		                    <h4>Sucesso!</h4>
-		                    A consulta foi cancelada com sucesso!
+		                    A consulta foi cancelada com sucesso e removida da base de dados!
 		                </div>
 		                <div class="col-md-7">
 		                </div>
