@@ -16,6 +16,7 @@ if(isset($_POST['submeter'])) {
 
     $result = mysqli_query($connection, $sql);
     $rows = mysqli_num_rows($result);
+    $arr = mysqli_fetch_assoc($result);
 
     if($rows == 0) {
         if(!isset($_SESSION['respostaErrada'])) {
@@ -23,7 +24,8 @@ if(isset($_POST['submeter'])) {
         }
         header("location: recuperar_senha_2.php");
     } else {
-        unset($_SESSION['username']);
+        unset($_SESSION['pergunta']);
+        unset($_SESSION['un']);
     }
 }
 ?>

@@ -3,9 +3,18 @@ require_once 'cabecalho.php';
 connectDataBase();
 if(isset($_POST['enviar'])) {
     unset($_POST['enviar']);
+
     // Salva o nome do usuário na variável $username
     $username = strtolower($_POST['username']);
     $username = mysqli_real_escape_string($connection, $username);
+
+    if(!isset($_SESSION['un'])) {
+        // 'un' is short to 'username'
+        $_SESSION['un'] = $username;
+    } else {
+        $username = $_SESSION['un'];
+    }
+
     // Consulta para saber se há um funcionário com esse nome de usuário cadastrado no banco de dados
     $sql = "SELECT fun_usuario FROM funcionarios WHERE lower(fun_usuario) = '$username'";
     $result = mysqli_query($connection, $sql);
@@ -14,6 +23,7 @@ if(isset($_POST['enviar'])) {
 
     // Se o número de linhas for igual a 0, não foi encontrado nenhum funcionário com o nome de usuário digitado
     if($rows == 0) {
+        unset($_SESSION['un']);
         // Seta a variável de sessão para exibir uma mesnagem de alerta na página anterior
         if(!isset($_SESSION['usuarioNaoExiste'])) {
             $_SESSION['usuarioNaoExiste'] = true;
@@ -28,13 +38,20 @@ if(isset($_POST['enviar'])) {
     $pergunta = $array['fun_secret_question'];
 } else {
     // Faz a mesma consulta anterior, mas só entrará aqui se a resposta que foi digitada foi errada
-    $username = mysqli_real_escape_string($connection, $_SESSION['username']);
+    $username = mysqli_real_escape_string($connection, $_SESSION['un']);
     $username = strtolower($username);
     $sql = "SELECT fun_secret_question FROM funcionarios WHERE lower(fun_usuario) = '$username'";
     $result = mysqli_query($connection, $sql);
     $array = mysqli_fetch_array($result);
     $pergunta = $array['fun_secret_question'];
-    unset($_SESSION['username']);
+}
+
+if(!isset($_SESSION['pergunta'])) {
+    $_SESSION['pergunta'] = $array['fun_secret_question'];
+    $pergunta = $_SESSION['pergunta'];
+} else {
+    $pergunta = $_SESSION['pergunta'];
+    $username = $_SESSION['un'];
 }
 ?>
 <div class='container marketing'>
