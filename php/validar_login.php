@@ -6,7 +6,7 @@ connectDataBase();
 // Salva o login e senha digitados pelo usuário no formulário de login
 $usuario = $_POST['usuario'];
 
-// Escapa aspas duplas ou simples número das variáveis de usuário e senha
+// Escapa aspas duplas ou simples das variáveis de usuário e senha
 $usuario = mysqli_real_escape_string($connection, $usuario);
 $senha = mysqli_real_escape_string($connection, $senha);
 $senha = md5($_POST['senha']); // Aplica a função HASH para a senha
